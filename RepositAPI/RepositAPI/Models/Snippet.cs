@@ -10,13 +10,13 @@ namespace RepositAPI.Models
      {
         public int ID { get; set; }
         public string Title { get; set; }
-        public DateTime date { get; set; }
+        public DateTime DateCreated { get; set; }
         public string CodeBody { get; set; }
         public Language Language { get; set; }
         public string Notes { get; set; }
-
-        public ICollection<SnippetTag> SnippetTags { get; set; }
-    }
+        public int AuthorID { get; set; }
+        public Author Author { get; set; }
+     }
 
      public enum Language
      {
@@ -33,5 +33,4 @@ namespace RepositAPI.Models
         CSS,
         Other
      }
-   
 }

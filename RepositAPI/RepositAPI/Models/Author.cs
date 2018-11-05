@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace RepositAPI.Models
 {
-    public class Tag
+    public class Author
     {
         public int ID { get; set; }
         public string Name { get; set; }
-
-        public ICollection<SnippetTag> Snippets { get; set; }
+        public ICollection<Snippet> Snippets { get; set; }
     }
 }
