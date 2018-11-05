@@ -115,7 +115,7 @@ A user can create, edit, and delete a snippet and will have the ability to creat
     - Code snippet can be deleted when selected.
   - Acceptance
     - Ensure snippet is deleted from database.
-    - Ensure a request failed message is sent if snoppet was not deleted.
+    - Ensure a request failed message is sent if snippet was not deleted.
     - Ensure only one snippet is deleted.
     - Public: As a developer, we want the api to provide consistent 
 
