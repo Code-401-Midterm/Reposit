@@ -4,6 +4,10 @@
 1. [Vision](#vision)
 2. [Scope](#scope)
 3. [Requirements](#requirements)
+4. [User Stories](#user-stories)
+5. [Wireframes](#wireframes)
+6. [Dataflow Diagram](#dataflow-diagram)
+7. [Database Schema](#database-schema)
 
 ## Vision
 This product will provide a virtual repository that allows users to categorize 
@@ -49,11 +53,16 @@ A user can create, edit, and delete a snippet and will have the ability to creat
   - The site will have a small total number of user “paths” (associated with CRUD operations) which makes it easier to test that each user path works as intended.
   - Unit Tests: Routes, Controllers & Views
   
-  ## User Stories
-  
-  ## Dataflow Diagram
-  ![dataflow](../assets/DataFlowDiagram.png)
-  
-  
-  ## Database Schema
-  ![db-schema](../assets/DBSchema.png)
+## User Stories
+
+## Wireframes
+
+## Dataflow Diagram
+![dataflow](../assets/DataFlowDiagram.png)
+### Description
+* Snippet: This table will hold the data for each individual snippet, such as the name, date, and code snippet body of text. This table also features an Enum for code languages.
+* Tag: This table contains the tags that will pertain to snippets created in our database
+* Snippet Tags: This is a pure join table that will join snippets and tags, emulating a many to many relationship.
+
+## Database Schema
+![db-schema](../assets/DBSchema.png)
