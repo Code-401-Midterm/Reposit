@@ -120,6 +120,7 @@ A user can create, edit, and delete a snippet and will have the ability to creat
     - Public: As a developer, we want the api to provide consistent 
 
 ## Wireframes
+![wireframe](../assets/RepositWF.png)
 
 ## Dataflow Diagram
 ![dataflow](../assets/DataFlowDiagram.png)
