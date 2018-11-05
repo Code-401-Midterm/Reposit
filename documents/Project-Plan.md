@@ -59,10 +59,11 @@ A user can create, edit, and delete a snippet and will have the ability to creat
 
 ## Dataflow Diagram
 ![dataflow](../assets/DataFlowDiagram.png)
+
+## Database Schema
+![db-schema](../assets/DBSchema.png)
+
 ### Description
 * Snippet: This table will hold the data for each individual snippet, such as the name, date, and code snippet body of text. This table also features an Enum for code languages.
 * Tag: This table contains the tags that will pertain to snippets created in our database
 * Snippet Tags: This is a pure join table that will join snippets and tags, emulating a many to many relationship.
-
-## Database Schema
-![db-schema](../assets/DBSchema.png)
