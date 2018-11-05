@@ -7,7 +7,7 @@
 4. [User Stories](#user-stories)
 5. [Wireframes](#wireframes)
 6. [Dataflow Diagram](#dataflow-diagram)
-7. [Database Schema](#database-schema)
+7. [Database Schemas](#database-schema)
 
 ## Vision
 This product will provide a virtual repository that allows users to categorize 
@@ -126,7 +126,8 @@ A user can create, edit, and delete a snippet and will have the ability to creat
 ![dataflow](../assets/DataFlowDiagram.png)
 
 ## Database Schema
-![db-schema](../assets/DBSchema.png)
+![API Schema](../assets/APIDBSchema.jpg)
+![Web App Schema](../assets/WebAppDBSchema.jpg)
 
 ### Description
 * Snippet: This table will hold the data for each individual snippet, such as the name, date, and code snippet body of text. This table also features an Enum for code languages.
