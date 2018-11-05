@@ -14,7 +14,7 @@ namespace Reposit.Models
         public string Language { get; set; }
         public string Notes { get; set; }
         public string Author { get; set; }
-        public Category ID { get; set; }
+        public int CategoryID { get; set; }
 
         public Category Category { get; set; }
     }
