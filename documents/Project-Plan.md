@@ -84,7 +84,7 @@ A user can create, edit, and delete a snippet and will have the ability to creat
     - All details are saved
     - Data can be retrieved
 ### API  
-* Create: As a developer, I want to allow users to create code snippets to add to the database.
+* CREATE: As a developer, I want to allow users to create code snippets to add to the database.
   - Features
     - User will enter title, category, code snippet, and source of snippet.
     - Created snippets will save to database.
@@ -93,7 +93,7 @@ A user can create, edit, and delete a snippet and will have the ability to creat
     - Ensure required fields are completed in order to create snippet.
     - Ensure a unique id is created when snippet is created.
     - Ensure code snippet can be retrieved after creating.
-* Read: As a developer, I want to allow users to retrieve or search for code snippets.
+* READ: As a developer, I want to allow users to retrieve or search for code snippets.
   - Features
     - Requested information will be returned to user based on the search criteria.
     - A status message will be returned if there is no matching data.
@@ -102,7 +102,7 @@ A user can create, edit, and delete a snippet and will have the ability to creat
     - Ensure information can be retrieved matching search criteria.
     - Ensure multiple results can be returned when requested.
     - Ensure a message is returned if there is no matching data.
-* Update: As a developer, I want to allow users to make updates to code snippets.
+* UPDATE: As a developer, I want to allow users to make updates to code snippets.
   - Features
     - Updated snippet will save over original snippet in database.
     - Allow updates to category tags and language.
@@ -110,7 +110,7 @@ A user can create, edit, and delete a snippet and will have the ability to creat
     - Ensure users have required fields entered
     - Ensure updated information is saved to database
     - Ensure request failed message is sent if information was not updated.
-* Delete: As a developer, I want to allow a user to delete a code snippet.
+* DELETE: As a developer, I want to allow a user to delete a code snippet.
   - Features
     - Code snippet can be deleted when selected.
   - Acceptance
