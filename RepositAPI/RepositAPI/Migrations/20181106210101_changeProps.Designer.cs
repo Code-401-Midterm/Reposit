@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositAPI.Data;
 
 namespace RepositAPI.Migrations
 {
     [DbContext(typeof(RepositDbContext))]
-    partial class RepositDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181106210101_changeProps")]
+    partial class changeProps
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
