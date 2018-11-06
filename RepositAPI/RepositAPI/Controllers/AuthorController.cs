@@ -25,10 +25,9 @@ namespace RepositAPI.Controllers
         /// </summary>
         /// <returns>A list of all Authors</returns>
         [HttpGet]
-        public async Task<IEnumerable<AuthorDTO>> Get()
+        public async Task<IEnumerable<Author>> Get()
         {
-            //return await _context.Authors.ToListAsync();
-            var authors = _context.Authors
+            return await _context.Authors.ToListAsync();
         }
 
         /// <summary>
@@ -39,11 +38,6 @@ namespace RepositAPI.Controllers
         [HttpGet("{id}", Name = "GetAuthorByID")]
         public async Task<IActionResult> Get([FromRoute]int id)
         {
-            //var author = await _context.Authors.FirstOrDefaultAsync(x => x.ID == id);
-            //var author = await _context.Authors
-            //                   .Include(au => au.Snippets)
-            //                   .FirstOrDefaultAsync(x => x.ID == id);
-
             var snippets =  _context.Snippets
                                  .Where(s => s.AuthorID == id)
                                  .Select(s => new SnippetDTO
