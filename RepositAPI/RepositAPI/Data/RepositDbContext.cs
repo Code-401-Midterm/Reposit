@@ -18,7 +18,7 @@ namespace RepositAPI.Data
         {
             //Sets date in sql database correctly
             modelBuilder.Entity<Snippet>()
-            .Property(f => f.DateCreated)
+            .Property(f => f.Date)
             .HasColumnType("datetime2");
 
             modelBuilder.Entity<Author>().HasData(
@@ -54,7 +54,7 @@ namespace RepositAPI.Data
                 {
                     ID = 1,
                     Title = "Hello World console writeline",
-                    DateCreated = DateTime.Now,
+                    Date = DateTime.Now,
                     CodeBody = "Console.WriteLine(\"Hello World!\")",
                     Language = Language.Csharp,
                     Notes = "This is cool.",
@@ -64,7 +64,7 @@ namespace RepositAPI.Data
                 {
                     ID = 2,
                     Title = "Hello World python",
-                    DateCreated = DateTime.Now,
+                    Date = DateTime.Now,
                     CodeBody = "Print(\"Hello World!\")",
                     Language = Language.Python,
                     Notes = "This is cooler",

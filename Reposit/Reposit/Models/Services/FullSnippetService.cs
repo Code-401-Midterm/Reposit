@@ -4,7 +4,11 @@ using Reposit.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Web.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Reposit.Models.Services
 {
@@ -49,6 +53,31 @@ namespace Reposit.Models.Services
         public IEnumerable<Category> GetAllCategories()
         {
             return _context.Category.ToList();
+        }
+
+        public async Task<List<FullSnippet>> GetSnippetsFromAPI()
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    client.BaseAddress = new Uri("http://repositapi.azurewebsites.net");
+                    var response = await client.GetAsync("/api/snippet");
+                    response.EnsureSuccessStatusCode();
+
+                    var stringResult = await response.Content.ReadAsStringAsync();
+                    var rawSnippet = JsonConvert.DeserializeObject<List<FullSnippet>>(stringResult);
+
+                    return rawSnippet;
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+
+            }
         }
     }
 }

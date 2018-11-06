@@ -18,5 +18,7 @@ namespace Reposit.Models.Interfaces
         Task<FullSnippet> GetSnippet(int? id);
 
         IEnumerable<Category> GetAllCategories();
+
+        Task<List<FullSnippet>> GetSnippetsFromAPI();
     }
 }
