@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Reposit.Data;
 using Reposit.Models;
+using Reposit.Models.Interfaces;
 
 namespace Reposit.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly RepositDbContext _context;
+        private readonly ICategory _context;
 
-        public CategoriesController(RepositDbContext context)
+        public CategoriesController(ICategory context)
         {
             _context = context;
         }
@@ -22,7 +23,7 @@ namespace Reposit.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Category.ToListAsync());
+            return View(await _context.GetCategories());
         }
 
         // GET: Categories/Details/5
@@ -33,8 +34,7 @@ namespace Reposit.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var category = await _context.GetCategory(id);
             if (category == null)
             {
                 return NotFound();
@@ -58,8 +58,7 @@ namespace Reposit.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
+                await _context.AddCategory(category);
                 return RedirectToAction(nameof(Index));
             }
             return View(category);
@@ -73,7 +72,7 @@ namespace Reposit.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category.FindAsync(id);
+            var category = await _context.GetCategory(id);
             if (category == null)
             {
                 return NotFound();
@@ -97,8 +96,7 @@ namespace Reposit.Controllers
             {
                 try
                 {
-                    _context.Update(category);
-                    await _context.SaveChangesAsync();
+                    await _context.UpdateCategory(category);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,8 +122,7 @@ namespace Reposit.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var category = await _context.GetCategory(id);
             if (category == null)
             {
                 return NotFound();
@@ -139,15 +136,13 @@ namespace Reposit.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.Category.FindAsync(id);
-            _context.Category.Remove(category);
-            await _context.SaveChangesAsync();
+            await _context.DeleteCategory(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool CategoryExists(int id)
         {
-            return _context.Category.Any(e => e.ID == id);
+            return _context.GetCategory(id) != null;
         }
     }
 }
