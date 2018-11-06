@@ -18,14 +18,15 @@
 
     @foreach (var thing in Model)
     {
-        <div class="col-md-3 preview-cards">
+        <div class="col-md-3 preview-cards ml-5 mb-5">
             <h4>
                 @Html.DisplayFor(modelItem => thing.Title)
             </h4>
+            <span class="badge badge-primary mb-4" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
+            
             <p>
                 @Html.DisplayFor(modelItem => thing.Notes)
             </p>
-                <span class="badge badge-primary" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
             <p>
                 <a asp-action="Details" asp-route-id="@thing.ID">View details »</a>
             </p>
