@@ -140,10 +140,11 @@ namespace Reposit.Controllers
         // POST: FullSnippets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int categoryID)
         {
             await _context.DeleteSnippet(id);
-            return RedirectToAction(nameof(Index));
+            //return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Categories", new { id = categoryID });
         }
 
         private bool FullSnippetExists(int id)
