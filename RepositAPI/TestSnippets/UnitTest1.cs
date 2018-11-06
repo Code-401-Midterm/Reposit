@@ -1,6 +1,8 @@
 using System;
 using Xunit;
 using RepositAPI.Models;
+using RepositAPI.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace TestSnippets
 {
@@ -70,5 +72,37 @@ namespace TestSnippets
             s.AuthorID = 1;
             Assert.Equal(1, s.AuthorID);
         }
+
+        //Test Create and Get Snippet by ID
+        [Fact]
+        public async void CreateGetSnippetByID()
+        {
+            DbContextOptions<RepositDbContext> options =
+            new DbContextOptionsBuilder<RepositDbContext>()
+            .UseInMemoryDatabase("CreateGetSnippetByID")
+            .Options;
+
+            using (RepositDbContext context = new RepositDbContext(options))
+            {
+                //Arrange
+                Snippet s = new Snippet();
+                s.Title = "Test";
+                s.DateCreated = DateTime.Now;
+                s.CodeBody = "code stuff";
+                s.Language = Language.Other;
+                s.Notes = "notes";
+                s.AuthorID = 1;
+                context.Snippets.Add(s);
+                context.SaveChanges();
+
+                //Act
+                var snippet = await context.Snippets.FirstOrDefaultAsync(x => x.Title == s.Title);
+
+                //Assert
+                Assert.Equal(s.Title, snippet.Title);
+            }
+        }
+        //Test Create and read Get snippet by ID
+
     }
 }
