@@ -1,4 +1,5 @@
-﻿using Reposit.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Reposit.Data;
 using Reposit.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,29 +17,33 @@ namespace Reposit.Models.Services
             _context = context;
         }
 
-        public Task AddSnippet(FullSnippet fullSnippet)
+        public async Task AddSnippet(FullSnippet fullSnippet)
         {
-            throw new NotImplementedException();
+            _context.FullSnippet.Add(fullSnippet);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteSnippet(FullSnippet fullSnippet)
+        public async Task DeleteSnippet(int id)
         {
-            throw new NotImplementedException();
+            FullSnippet snip = await GetSnippet(id);
+            _context.FullSnippet.Remove(snip);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<FullSnippet> GetSnippet(int? id)
+        public async Task<FullSnippet> GetSnippet(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.FullSnippet.FirstOrDefaultAsync(snip => snip.ID == id);
         }
 
-        public Task<List<FullSnippet>> GetSnippets()
+        public async Task<List<FullSnippet>> GetSnippets()
         {
-            throw new NotImplementedException();
+            return await _context.FullSnippet.ToListAsync();
         }
 
-        public Task UpdateSnippet(FullSnippet fullSnippet)
+        public async Task UpdateSnippet(FullSnippet fullSnippet)
         {
-            throw new NotImplementedException();
+            _context.FullSnippet.Update(fullSnippet);
+            await _context.SaveChangesAsync();
         }
     }
 }

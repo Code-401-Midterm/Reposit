@@ -11,7 +11,7 @@ namespace Reposit.Models.Interfaces
 
         Task UpdateSnippet(FullSnippet fullSnippet);
 
-        Task DeleteSnippet(FullSnippet fullSnippet);
+        Task DeleteSnippet(int id);
 
         Task<List<FullSnippet>> GetSnippets();
 
