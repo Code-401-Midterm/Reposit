@@ -47,6 +47,7 @@ namespace Reposit.Controllers
         // GET: FullSnippets/Create
         public IActionResult Create()
         {
+            ViewData["CategoryID"] = new SelectList(_context.GetAllCategories(), "ID", "Title");
             return View();
         }
 

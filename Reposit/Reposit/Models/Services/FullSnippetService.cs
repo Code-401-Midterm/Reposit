@@ -45,5 +45,10 @@ namespace Reposit.Models.Services
             _context.FullSnippet.Update(fullSnippet);
             await _context.SaveChangesAsync();
         }
+
+        public IEnumerable<Category> GetAllCategories()
+        {
+            return _context.Category.ToList();
+        }
     }
 }
