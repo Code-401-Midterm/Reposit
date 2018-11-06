@@ -80,6 +80,7 @@ namespace Reposit.Controllers
                 return NotFound();
             }
 
+            ViewData["CategoryID"] = new SelectList(_context.GetAllCategories(), "ID", "Title");
             return View(fullSnippet);
         }
 

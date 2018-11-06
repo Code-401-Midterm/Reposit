@@ -38,6 +38,7 @@ namespace Reposit
             });
 
             services.AddTransient<IFullSnippets, FullSnippetService>();
+            services.AddTransient<ICategory, CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
