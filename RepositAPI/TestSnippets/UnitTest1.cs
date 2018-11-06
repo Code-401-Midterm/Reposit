@@ -3,6 +3,7 @@ using Xunit;
 using RepositAPI.Models;
 using RepositAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace TestSnippets
 {
@@ -102,7 +103,62 @@ namespace TestSnippets
                 Assert.Equal(s.Title, snippet.Title);
             }
         }
-        //Test Create and read Get snippet by ID
+
+
+        //Test Get all snippets
+        [Fact]
+        public async void GetAllSnippets()
+        {
+            DbContextOptions<RepositDbContext> options =
+            new DbContextOptionsBuilder<RepositDbContext>()
+            .UseInMemoryDatabase("GetAllSnippets")
+            .Options;
+
+            using (RepositDbContext context = new RepositDbContext(options))
+            {
+                //Arrange
+                Snippet s1 = new Snippet();
+                s1.Title = "Test1";
+                s1.DateCreated = DateTime.Now;
+                s1.CodeBody = "code stuff";
+                s1.Language = Language.Other;
+                s1.Notes = "notes";
+                s1.AuthorID = 1;
+
+                Snippet s2 = new Snippet();
+                s2.Title = "Test2";
+                s2.DateCreated = DateTime.Now;
+                s2.CodeBody = "code";
+                s2.Language = Language.Other;
+                s2.Notes = "notes2";
+                s2.AuthorID = 1;
+
+                Snippet s3 = new Snippet();
+                s3.Title = "Test3";
+                s3.DateCreated = DateTime.Now;
+                s3.CodeBody = "stuff";
+                s3.Language = Language.Other;
+                s3.Notes = "notes 3";
+                s3.AuthorID = 1;
+
+                context.Snippets.Add(s1);
+                context.Snippets.Add(s2);
+                context.Snippets.Add(s3);
+                context.SaveChanges();
+
+                List<Snippet> rawSnippets = new List<Snippet>();
+                rawSnippets.Add(s1);
+                rawSnippets.Add(s2);
+                rawSnippets.Add(s3);
+
+
+                //Act
+                List<Snippet> snippets = await context.Snippets.ToListAsync();
+
+                //Assert
+                Assert.Equal(rawSnippets, snippets);
+            }
+        }
 
     }
 }
