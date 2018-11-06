@@ -13,7 +13,7 @@ namespace RepositAPI.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public DateTime DateCreated { get; set; }
+        public DateTime Date{ get; set; }
         [Required]
         public string CodeBody { get; set; }
         [Required]

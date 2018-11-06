@@ -14,7 +14,7 @@ namespace RepositAPI.Models
         public string CodeBody { get; set; }
         public Language Language { get; set; }
         public string Notes { get; set; }
-        public string AuthorName { get; set; }
+        public string Author { get; set; }
         public int AuthorID { get; set; }
     }
 }
