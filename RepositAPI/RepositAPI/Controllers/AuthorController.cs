@@ -25,9 +25,10 @@ namespace RepositAPI.Controllers
         /// </summary>
         /// <returns>A list of all Authors</returns>
         [HttpGet]
-        public async Task<IEnumerable<Author>> Get()
+        public async Task<IEnumerable<AuthorDTO>> Get()
         {
-            return await _context.Authors.ToListAsync();
+            //return await _context.Authors.ToListAsync();
+            var authors = _context.Authors
         }
 
         /// <summary>
