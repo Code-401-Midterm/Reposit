@@ -35,51 +35,138 @@ namespace TestsReposit
         }
 
         /// <summary>
-        /// Test to get full snippet properties
+        /// Test to get full snippet title
         /// </summary>
         [Fact]
-        public void TestToGetFullSnippetProperties()
+        public void TestToGetFullSnippetTitle()
         {
             FullSnippet fullSnippet = new FullSnippet();
             fullSnippet.Title = "Test Title";
-            fullSnippet.CodeBody = "<h1>code</h1>";
-            fullSnippet.Language = "C#";
-            fullSnippet.Notes = "Notes go here";
-            fullSnippet.Author = "Author";
-
+            
             Assert.Equal("Test Title", fullSnippet.Title);
-            Assert.Equal("<h1>code</h1>", fullSnippet.CodeBody);
-            Assert.Equal("C#", fullSnippet.Language);
-            Assert.Equal("Notes go here", fullSnippet.Notes);
-            Assert.Equal("Author", fullSnippet.Author);
         }
 
         /// <summary>
-        /// Test to set full snippet properties
+        /// Test to get full snippet code body
         /// </summary>
         [Fact]
-        public void TestToSetFullSnippetProperties()
+        public void TestToGetFullSnippetCodeBody()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
+            fullSnippet.CodeBody = "<h1>code</h1>";
+
+            Assert.Equal("<h1>code</h1>", fullSnippet.CodeBody);
+        }
+
+        /// <summary>
+        /// Test to get full snippet language
+        /// </summary>
+        [Fact]
+        public void TestToGetFullSnippetLanguage()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
+            fullSnippet.Language = "C#";
+
+            Assert.Equal("C#", fullSnippet.Language);
+        }
+
+        /// <summary>
+        /// Test to get full snippet notes
+        /// </summary>
+        [Fact]
+        public void TestToGetFullSnippetNotes()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
+            fullSnippet.Notes = "notes notes notes";
+
+            Assert.Equal("notes notes notes", fullSnippet.Notes);
+        }
+
+        /// <summary>
+        /// Test to get full snippet author
+        /// </summary>
+        [Fact]
+        public void TestToGetFullSnippetAuthor()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
+            fullSnippet.Author = "author";
+
+            Assert.Equal("author", fullSnippet.Author);
+        }
+
+        /// <summary>
+        /// Test to set full snippet title
+        /// </summary>
+        [Fact]
+        public void TestToSetFullSnippetTitle()
         {
             FullSnippet fullSnippet = new FullSnippet();
             fullSnippet.Title = "Test Title";
+            
+            fullSnippet.Title = "Test Title 2";
+           
+            Assert.Equal("Test Title 2", fullSnippet.Title);      
+        }
+
+        /// <summary>
+        /// Test to set full snippet code body
+        /// </summary>
+        [Fact]
+        public void TestToSetFullSnippetCodeBody()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
             fullSnippet.CodeBody = "<h1>code</h1>";
+
+            fullSnippet.CodeBody = "<h1>code 2</h1>";
+
+            Assert.Equal("<h1>code 2</h1>", fullSnippet.CodeBody);
+        }
+
+        /// <summary>
+        /// Test to set full snippet language
+        /// </summary>
+        [Fact]
+        public void TestToSetFullSnippetLanguage()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
             fullSnippet.Language = "C#";
+
+            fullSnippet.Language = "JavaScript";
+
+            Assert.Equal("JavaScript", fullSnippet.Language);
+        }
+
+        /// <summary>
+        /// Test to set full snippet notes
+        /// </summary>
+        [Fact]
+        public void TestToSetFullSnippetNotes()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
             fullSnippet.Notes = "Notes go here";
+
+            fullSnippet.Notes = "Notes notes notes";
+
+            Assert.Equal("Notes notes notes", fullSnippet.Notes);
+        }
+
+        /// <summary>
+        /// Test to set full snippet author
+        /// </summary>
+        [Fact]
+        public void TestToSetFullSnippetAuthor()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
             fullSnippet.Author = "Author";
 
-            fullSnippet.Title = "Test Title 2";
-            fullSnippet.CodeBody = "<h1>code 2</h1>";
-            fullSnippet.Language = "JavaScript";
-            fullSnippet.Notes = "Notes notes notes";
             fullSnippet.Author = "Author Author";
 
-            Assert.Equal("Test Title 2", fullSnippet.Title);
-            Assert.Equal("<h1>code 2</h1>", fullSnippet.CodeBody);
-            Assert.Equal("JavaScript", fullSnippet.Language);
-            Assert.Equal("Notes notes notes", fullSnippet.Notes);
             Assert.Equal("Author Author", fullSnippet.Author);
         }
 
+        /// <summary>
+        /// Testing to create and read a category
+        /// </summary>
         [Fact]
         public async void TestToCreateCategory()
         {
@@ -102,6 +189,61 @@ namespace TestsReposit
             }
         }
 
+        /// <summary>
+        /// Testing to update a category
+        /// </summary>
+        [Fact]
+        public async void TestToUpdateCategory()
+        {
+            DbContextOptions<RepositDbContext> options =
+                new DbContextOptionsBuilder<RepositDbContext>()
+                .UseInMemoryDatabase("GetSnippetTitle")
+                .Options;
 
+            using (RepositDbContext context = new RepositDbContext(options))
+            {
+                FullSnippet snippet = new FullSnippet();
+                snippet.Title = "Test";
+
+                context.FullSnippet.Add(snippet);
+                context.SaveChanges();
+
+                snippet.Title = "Update Test";
+                context.FullSnippet.Update(snippet);
+                context.SaveChanges();
+
+                var snippetName = await context.FullSnippet.FirstOrDefaultAsync(x => x.Title == snippet.Title);
+
+                Assert.Equal("Update Test", snippetName.Title);
+            }
+        }
+
+        /// <summary>
+        /// Testing to delete a category
+        /// </summary>
+        [Fact]
+        public async void TestToDeleteCategory()
+        {
+            DbContextOptions<RepositDbContext> options =
+                new DbContextOptionsBuilder<RepositDbContext>()
+                .UseInMemoryDatabase("GetSnippetTitle")
+                .Options;
+
+            using (RepositDbContext context = new RepositDbContext(options))
+            {
+                FullSnippet snippet = new FullSnippet();
+                snippet.Title = "Test";
+
+                context.FullSnippet.Add(snippet);
+                context.SaveChanges();
+
+                context.FullSnippet.Remove(snippet);
+                context.SaveChanges();
+
+                var snippetName = await context.FullSnippet.ToListAsync();
+
+                Assert.DoesNotContain(snippet, snippetName);
+            }
+        }
     }
 }
