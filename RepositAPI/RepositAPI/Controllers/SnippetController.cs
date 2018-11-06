@@ -23,7 +23,7 @@ namespace RepositAPI.Controllers
 
         //Get All
         [HttpGet]
-        public async Task<List<SnippetDTO>> Get()
+        public async Task<IEnumerable<SnippetDTO>> Get()
         {
             var snipList = await _context.Snippets.Include(s => s.Author).ToListAsync();
             var retList = new List<SnippetDTO>();
@@ -43,7 +43,7 @@ namespace RepositAPI.Controllers
                     }
                     );
             }
-            return retList;
+            return retList.ToList();
             //return await _context.Snippets.Include(s => s.Author).ToListAsync();
         }
 
