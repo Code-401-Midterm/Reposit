@@ -23,16 +23,48 @@ namespace RepositAPI.Controllers
 
         //Get All
         [HttpGet]
-        public async Task<IEnumerable<Snippet>> Get()
+        public async Task<List<SnippetDTO>> Get()
         {
-            return await _context.Snippets.ToListAsync();
+            var snipList = await _context.Snippets.Include(s => s.Author).ToListAsync();
+            var retList = new List<SnippetDTO>();
+            foreach (var snippet in snipList)
+            {
+                retList.Add(
+                    new SnippetDTO
+                    {
+                        ID = snippet.ID,
+                        Title = snippet.Title,
+                        DateCreated = snippet.DateCreated,
+                        CodeBody = snippet.CodeBody,
+                        Language = snippet.Language,
+                        Notes = snippet.Notes,
+                        AuthorName = snippet.Author.Name,
+                        AuthorID = snippet.AuthorID
+                    }
+                    );
+            }
+            return retList;
+            //return await _context.Snippets.Include(s => s.Author).ToListAsync();
         }
 
         //Get Snippet by ID
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute]int id)
         {
-            var snippet = await _context.Snippets.FirstOrDefaultAsync(x => x.ID == id);
+            var snippet = await _context.Snippets
+                                .Include(s => s.Author)
+                                .Select(s =>
+                                new SnippetDTO
+                                {
+                                    ID = s.ID,
+                                    Title = s.Title,
+                                    DateCreated = s.DateCreated,
+                                    CodeBody = s.CodeBody,
+                                    Language = s.Language,
+                                    Notes = s.Notes,
+                                    AuthorName = s.Author.Name,
+                                    AuthorID = s.AuthorID
+                                }).SingleOrDefaultAsync(s => s.ID == id);
 
             if (snippet == null)
             {

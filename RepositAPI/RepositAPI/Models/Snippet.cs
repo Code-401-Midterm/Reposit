@@ -21,6 +21,8 @@ namespace RepositAPI.Models
         public string Notes { get; set; }
 
         public int AuthorID { get; set; }
+
+        public Author Author { get; set; }
     }
 
      public enum Language
