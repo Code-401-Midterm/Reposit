@@ -69,8 +69,8 @@ namespace RepositAPI.Migrations
                     b.ToTable("Snippets");
 
                     b.HasData(
-                        new { ID = 1, AuthorID = 1, CodeBody = "Console.WriteLine(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 14, 54, 25, 917, DateTimeKind.Local), Language = 8, Notes = "This is cool.", Title = "Hello World console writeline" },
-                        new { ID = 2, AuthorID = 2, CodeBody = "Print(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 14, 54, 25, 919, DateTimeKind.Local), Language = 4, Notes = "This is cooler", Title = "Hello World python" }
+                        new { ID = 1, AuthorID = 1, CodeBody = "Console.WriteLine(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 16, 7, 11, 641, DateTimeKind.Local), Language = 8, Notes = "This is cool.", Title = "Hello World console writeline" },
+                        new { ID = 2, AuthorID = 2, CodeBody = "Print(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 16, 7, 11, 643, DateTimeKind.Local), Language = 4, Notes = "This is cooler", Title = "Hello World python" }
                     );
                 });
 

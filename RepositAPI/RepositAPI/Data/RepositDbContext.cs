@@ -47,8 +47,10 @@ namespace RepositAPI.Data
                 }
             );
 
+            
+
             modelBuilder.Entity<Snippet>().HasData(
-                new Snippet
+                new 
                 {
                     ID = 1,
                     Title = "Hello World console writeline",
@@ -58,7 +60,7 @@ namespace RepositAPI.Data
                     Notes = "This is cool.",
                     AuthorID = 1
                 },
-                new Snippet
+                new 
                 {
                     ID = 2,
                     Title = "Hello World python",

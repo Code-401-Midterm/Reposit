@@ -10,8 +10,8 @@ using RepositAPI.Data;
 namespace RepositAPI.Migrations
 {
     [DbContext(typeof(RepositDbContext))]
-    [Migration("20181105222758_changeModels")]
-    partial class changeModels
+    [Migration("20181106000711_fixIssueTry")]
+    partial class fixIssueTry
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,11 +27,20 @@ namespace RepositAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new { ID = 1, Name = "Jeff" },
+                        new { ID = 2, Name = "Kendra" },
+                        new { ID = 3, Name = "Richard" },
+                        new { ID = 4, Name = "Allisa" },
+                        new { ID = 5, Name = "Jeremy" }
+                    );
                 });
 
             modelBuilder.Entity("RepositAPI.Models.Snippet", b =>
@@ -42,21 +51,29 @@ namespace RepositAPI.Migrations
 
                     b.Property<int>("AuthorID");
 
-                    b.Property<string>("CodeBody");
+                    b.Property<string>("CodeBody")
+                        .IsRequired();
 
-                    b.Property<DateTime>("DateCreated");
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Language");
 
                     b.Property<string>("Notes");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
                     b.HasIndex("AuthorID");
 
                     b.ToTable("Snippets");
+
+                    b.HasData(
+                        new { ID = 1, AuthorID = 1, CodeBody = "Console.WriteLine(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 16, 7, 11, 641, DateTimeKind.Local), Language = 8, Notes = "This is cool.", Title = "Hello World console writeline" },
+                        new { ID = 2, AuthorID = 2, CodeBody = "Print(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 16, 7, 11, 643, DateTimeKind.Local), Language = 4, Notes = "This is cooler", Title = "Hello World python" }
+                    );
                 });
 
             modelBuilder.Entity("RepositAPI.Models.Snippet", b =>
