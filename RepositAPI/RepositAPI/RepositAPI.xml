@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RepositAPI</name>
+    </assembly>
+    <members>
+        <member name="M:RepositAPI.Controllers.AuthorController.Get">
+            <summary>
+            Returns all Authors with their details
+            </summary>
+            <returns>A list of all Authors</returns>
+        </member>
+        <member name="M:RepositAPI.Controllers.AuthorController.Get(System.Int32)">
+            <summary>
+            Gets an Author by ID
+            </summary>
+            <param name="id">Required</param>
+            <returns>The Author's details and a list of all Snippets authored</returns>
+        </member>
+        <member name="M:RepositAPI.Controllers.AuthorController.Post(RepositAPI.Models.Author)">
+            <summary>
+            Createss a new Author
+            </summary>
+            <param name="author">Required. Do not include an explicit
+            id in the body. Name field is required.</param>
+            <returns>201 Created status and new Author's details</returns>
+        </member>
+    </members>
+</doc>

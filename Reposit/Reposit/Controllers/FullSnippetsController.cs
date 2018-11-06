@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Reposit.Data;
 using Reposit.Models;
+using Reposit.Models.Interfaces;
 
 namespace Reposit.Controllers
 {
     public class FullSnippetsController : Controller
     {
-        private readonly RepositDbContext _context;
+        private readonly IFullSnippets _context;
 
-        public FullSnippetsController(RepositDbContext context)
+        public FullSnippetsController(IFullSnippets context)
         {
             _context = context;
         }
@@ -22,8 +23,7 @@ namespace Reposit.Controllers
         // GET: FullSnippets
         public async Task<IActionResult> Index()
         {
-            var repositDbContext = _context.FullSnippet.Include(f => f.Category);
-            return View(await repositDbContext.ToListAsync());
+            return View(await _context.GetSnippets());
         }
 
         // GET: FullSnippets/Details/5
@@ -34,9 +34,8 @@ namespace Reposit.Controllers
                 return NotFound();
             }
 
-            var fullSnippet = await _context.FullSnippet
-                .Include(f => f.Category)
-                .FirstOrDefaultAsync(m => m.ID == id);
+            FullSnippet fullSnippet = await _context.GetSnippet(id);
+
             if (fullSnippet == null)
             {
                 return NotFound();
@@ -48,7 +47,7 @@ namespace Reposit.Controllers
         // GET: FullSnippets/Create
         public IActionResult Create()
         {
-            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Title");
+            ViewData["CategoryID"] = new SelectList(_context.GetAllCategories(), "ID", "Title");
             return View();
         }
 
@@ -61,11 +60,9 @@ namespace Reposit.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(fullSnippet);
-                await _context.SaveChangesAsync();
+                await _context.AddSnippet(fullSnippet);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Title", fullSnippet.CategoryID);
             return View(fullSnippet);
         }
 
@@ -77,12 +74,12 @@ namespace Reposit.Controllers
                 return NotFound();
             }
 
-            var fullSnippet = await _context.FullSnippet.FindAsync(id);
+            FullSnippet fullSnippet = await _context.GetSnippet(id);
             if (fullSnippet == null)
             {
                 return NotFound();
             }
-            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Title", fullSnippet.CategoryID);
+
             return View(fullSnippet);
         }
 
@@ -102,8 +99,7 @@ namespace Reposit.Controllers
             {
                 try
                 {
-                    _context.Update(fullSnippet);
-                    await _context.SaveChangesAsync();
+                    await _context.UpdateSnippet(fullSnippet);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -118,7 +114,7 @@ namespace Reposit.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryID"] = new SelectList(_context.Category, "ID", "Title", fullSnippet.CategoryID);
+
             return View(fullSnippet);
         }
 
@@ -130,9 +126,8 @@ namespace Reposit.Controllers
                 return NotFound();
             }
 
-            var fullSnippet = await _context.FullSnippet
-                .Include(f => f.Category)
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var fullSnippet = await _context.GetSnippet(id);
+
             if (fullSnippet == null)
             {
                 return NotFound();
@@ -146,15 +141,13 @@ namespace Reposit.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var fullSnippet = await _context.FullSnippet.FindAsync(id);
-            _context.FullSnippet.Remove(fullSnippet);
-            await _context.SaveChangesAsync();
+            await _context.DeleteSnippet(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool FullSnippetExists(int id)
         {
-            return _context.FullSnippet.Any(e => e.ID == id);
+            return _context.GetSnippet(id) != null;
         }
     }
 }

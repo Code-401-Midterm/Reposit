@@ -20,14 +20,21 @@ namespace RepositAPI.Controllers
             _context = context;
         }
 
-        //Get All
+        /// <summary>
+        /// Returns all Authors with their details
+        /// </summary>
+        /// <returns>A list of all Authors</returns>
         [HttpGet]
         public async Task<IEnumerable<Author>> Get()
         {
             return await _context.Authors.ToListAsync();
         }
 
-        //Get Author by ID
+        /// <summary>
+        /// Gets an Author by ID
+        /// </summary>
+        /// <param name="id">Required</param>
+        /// <returns>The Author's details and a list of all Snippets authored</returns>
         [HttpGet("{id}", Name = "GetAuthorByID")]
         public async Task<IActionResult> Get([FromRoute]int id)
         {
@@ -42,7 +49,12 @@ namespace RepositAPI.Controllers
             return Ok(author);
         }
 
-        //Create new Author
+        /// <summary>
+        /// Createss a new Author
+        /// </summary>
+        /// <param name="author">Required. Do not include an explicit
+        /// id in the body. Name field is required.</param>
+        /// <returns>201 Created status and new Author's details</returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Author author)
         {
