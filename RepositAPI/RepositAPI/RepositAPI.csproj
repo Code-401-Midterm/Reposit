@@ -9,6 +9,10 @@
     <DocumentationFile>C:\Users\Kendragon\codefellows\401\Project\RepositAPI\RepositAPI\RepositAPI.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\Jeff\source\repos\Project\RepositAPI\RepositAPI\RepositAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
