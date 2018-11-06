@@ -39,10 +39,36 @@ namespace RepositAPI.Controllers
         public async Task<IActionResult> Get([FromRoute]int id)
         {
             //var author = await _context.Authors.FirstOrDefaultAsync(x => x.ID == id);
+            //var author = await _context.Authors
+            //                   .Include(au => au.Snippets)
+            //                   .FirstOrDefaultAsync(x => x.ID == id);
+
+            var snippets =  _context.Snippets
+                                 .Where(s => s.AuthorID == id)
+                                 .Select(s => new SnippetDTO
+                                 {
+                                     ID = s.ID,
+                                     Title = s.Title,
+                                     DateCreated = s.Date,
+                                     CodeBody = s.CodeBody,
+                                     Language = s.Language,
+                                     Notes = s.Notes,
+                                     Author = s.Author.Name,
+                                     AuthorID = s.AuthorID
+                                 }).ToList();
+
+
             var author = await _context.Authors
-                               .Include(au => au.Snippets)
-                               .FirstOrDefaultAsync(x => x.ID == id);
-            if(author == null)
+                               .Select(a =>
+                               new AuthorDTO
+                               {
+                                   ID = a.ID,
+                                   Name = a.Name,
+                                   Snippets = snippets
+
+                               }).SingleOrDefaultAsync(au => au.ID == id);
+
+            if (author == null)
             {
                 return NotFound();
             }

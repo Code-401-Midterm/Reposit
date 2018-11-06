@@ -10,6 +10,6 @@ namespace RepositAPI.Models
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Snippet> Snippets { get; set; }
+        public ICollection<SnippetDTO> Snippets { get; set; }
     }
 }
