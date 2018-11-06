@@ -68,22 +68,7 @@ namespace Reposit.Models.Services
                     var stringResult = await response.Content.ReadAsStringAsync();
                     var rawSnippet = JsonConvert.DeserializeObject<List<FullSnippet>>(stringResult);
 
-                    List<FullSnippet> output = new List<FullSnippet>();
-                    foreach (var item in rawSnippet)
-                    {
-                        new FullSnippet
-                        {
-                            Title = item.Title,
-                            Date = item.Date,
-                            CodeBody = item.CodeBody,
-                            Language = item.Language,
-                            Notes = item.Notes,
-                            Author = item.Author,
-                            CategoryID = 1000
-                        };
-                        output.Add(item);
-                    }
-                    return output;
+                    return rawSnippet;
 
                 }
                 catch (Exception)
