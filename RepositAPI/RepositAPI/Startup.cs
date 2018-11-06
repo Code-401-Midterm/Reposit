@@ -31,14 +31,16 @@ namespace RepositAPI
 
             services.AddDbContext<RepositDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
-            services.AddSwaggerGen(
-                c => c.SwaggerDoc(
-                    "v1", new Info
-                    {
-                        Title="Reposit API",
-                        Description="Simple GET/POST API for code snippets",
-                    }
-               ));
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc(
+                        "v1", new Info
+                        {
+                            Title = "Reposit API",
+                            Description = "Simple GET/POST API for code snippets",
+                        });
+                string xmlPath = System.AppDomain.CurrentDomain.BaseDirectory + @"RepositAPI.xml";
+                c.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

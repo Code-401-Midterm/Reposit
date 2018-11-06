@@ -5,6 +5,10 @@
     <UserSecretsId>38acdb19-fc87-4bad-b52f-0fb6301ee0b6</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\Kendragon\codefellows\401\Project\RepositAPI\RepositAPI\RepositAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
