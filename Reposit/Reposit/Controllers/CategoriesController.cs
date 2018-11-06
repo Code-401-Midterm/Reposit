@@ -35,11 +35,13 @@ namespace Reposit.Controllers
             }
 
             var category = await _context.GetCategory(id);
+
             if (category == null)
             {
                 return NotFound();
             }
 
+            category.Snippets = await _context.GetAllSnippetsFromCategory(id);
             return View(category);
         }
 

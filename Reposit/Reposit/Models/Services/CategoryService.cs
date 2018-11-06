@@ -30,6 +30,11 @@ namespace Reposit.Models.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task<List<FullSnippet>> GetAllSnippetsFromCategory(int? id)
+        {
+            return await _context.FullSnippet.Where(snip => snip.CategoryID == id).ToListAsync();
+        }
+
         public async Task<List<Category>> GetCategories()
         {
             return await _context.Category.ToListAsync();
