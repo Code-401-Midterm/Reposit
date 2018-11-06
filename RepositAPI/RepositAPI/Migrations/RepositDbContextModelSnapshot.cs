@@ -69,14 +69,14 @@ namespace RepositAPI.Migrations
                     b.ToTable("Snippets");
 
                     b.HasData(
-                        new { ID = 1, AuthorID = 1, CodeBody = "Console.WriteLine(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 16, 7, 11, 641, DateTimeKind.Local), Language = 8, Notes = "This is cool.", Title = "Hello World console writeline" },
-                        new { ID = 2, AuthorID = 2, CodeBody = "Print(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 16, 7, 11, 643, DateTimeKind.Local), Language = 4, Notes = "This is cooler", Title = "Hello World python" }
+                        new { ID = 1, AuthorID = 1, CodeBody = "Console.WriteLine(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 19, 25, 29, 44, DateTimeKind.Local), Language = 8, Notes = "This is cool.", Title = "Hello World console writeline" },
+                        new { ID = 2, AuthorID = 2, CodeBody = "Print(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 19, 25, 29, 46, DateTimeKind.Local), Language = 4, Notes = "This is cooler", Title = "Hello World python" }
                     );
                 });
 
             modelBuilder.Entity("RepositAPI.Models.Snippet", b =>
                 {
-                    b.HasOne("RepositAPI.Models.Author", "Author")
+                    b.HasOne("RepositAPI.Models.Author")
                         .WithMany("Snippets")
                         .HasForeignKey("AuthorID")
                         .OnDelete(DeleteBehavior.Cascade);

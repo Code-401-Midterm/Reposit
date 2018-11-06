@@ -28,7 +28,7 @@ namespace RepositAPI
         {
             services.AddMvc();
 
-            services.AddDbContext<RepositDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddDbContext<RepositDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:ProductionDB"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
