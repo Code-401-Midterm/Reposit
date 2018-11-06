@@ -23,7 +23,7 @@ namespace Reposit.Controllers
         // GET: FullSnippets
         public async Task<IActionResult> Index()
         {
-            return View(await _context.GetSnippets());
+            return View(await _context.GetSnippetsFromAPI());
         }
 
         // GET: FullSnippets/Details/5
