@@ -32,11 +32,6 @@ namespace RepositAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute]int id)
         {
-            //var snippet = await _context.Snippets.FirstOrDefaultAsync(x => x.ID == id);
-
-            //var snippet = await _context.Snippets
-            //                    .Include(s => s.Author)
-            //                    .FirstOrDefaultAsync(x => x.ID == id);
             var snippet = await _context.Snippets
                                 .Include(s => s.Author)
                                 .Select(s =>
@@ -51,6 +46,7 @@ namespace RepositAPI.Controllers
                                     AuthorName = s.Author.Name,
                                     AuthorID = s.AuthorID
                                 }).SingleOrDefaultAsync(s => s.ID == id);
+
             if (snippet == null)
             {
                 return NotFound();
