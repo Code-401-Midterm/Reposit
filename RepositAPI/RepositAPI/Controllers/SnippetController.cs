@@ -34,11 +34,11 @@ namespace RepositAPI.Controllers
                     {
                         ID = snippet.ID,
                         Title = snippet.Title,
-                        DateCreated = snippet.DateCreated,
+                        DateCreated = snippet.Date,
                         CodeBody = snippet.CodeBody,
                         Language = snippet.Language,
                         Notes = snippet.Notes,
-                        AuthorName = snippet.Author.Name,
+                        Author = snippet.Author.Name,
                         AuthorID = snippet.AuthorID
                     }
                     );
@@ -58,11 +58,11 @@ namespace RepositAPI.Controllers
                                 {
                                     ID = s.ID,
                                     Title = s.Title,
-                                    DateCreated = s.DateCreated,
+                                    DateCreated = s.Date,
                                     CodeBody = s.CodeBody,
                                     Language = s.Language,
                                     Notes = s.Notes,
-                                    AuthorName = s.Author.Name,
+                                    Author = s.Author.Name,
                                     AuthorID = s.AuthorID
                                 }).SingleOrDefaultAsync(s => s.ID == id);
 
