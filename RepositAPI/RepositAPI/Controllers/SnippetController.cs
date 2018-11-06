@@ -23,9 +23,28 @@ namespace RepositAPI.Controllers
 
         //Get All
         [HttpGet]
-        public async Task<IEnumerable<Snippet>> Get()
+        public async Task<List<SnippetDTO>> Get()
         {
-            return await _context.Snippets.ToListAsync();
+            var snipList = await _context.Snippets.Include(s => s.Author).ToListAsync();
+            var retList = new List<SnippetDTO>();
+            foreach (var snippet in snipList)
+            {
+                retList.Add(
+                    new SnippetDTO
+                    {
+                        ID = snippet.ID,
+                        Title = snippet.Title,
+                        DateCreated = snippet.DateCreated,
+                        CodeBody = snippet.CodeBody,
+                        Language = snippet.Language,
+                        Notes = snippet.Notes,
+                        AuthorName = snippet.Author.Name,
+                        AuthorID = snippet.AuthorID
+                    }
+                    );
+            }
+            return retList;
+            //return await _context.Snippets.Include(s => s.Author).ToListAsync();
         }
 
         //Get Snippet by ID
