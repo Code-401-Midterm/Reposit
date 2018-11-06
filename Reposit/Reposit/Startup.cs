@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Reposit.Data;
+using Reposit.Models.Interfaces;
+using Reposit.Models.Services;
 
 namespace Reposit
 {
@@ -34,6 +36,8 @@ namespace Reposit
             {
                 options.UseSqlServer(Configuration.GetConnectionString("ProductionDb"));
             });
+
+            services.AddTransient<IFullSnippets, FullSnippetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
