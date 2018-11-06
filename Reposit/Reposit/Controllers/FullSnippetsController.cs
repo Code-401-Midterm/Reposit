@@ -61,7 +61,8 @@ namespace Reposit.Controllers
             if (ModelState.IsValid)
             {
                 await _context.AddSnippet(fullSnippet);
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "FullSnippets", new { id = fullSnippet.ID });
             }
             return View(fullSnippet);
         }
