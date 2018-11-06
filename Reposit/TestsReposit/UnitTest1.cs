@@ -165,10 +165,10 @@ namespace TestsReposit
         }
 
         /// <summary>
-        /// Testing to create and read a category
+        /// Testing to create and read a full snippet
         /// </summary>
         [Fact]
-        public async void TestToCreateCategory()
+        public async void TestToCreateAndReadFullSnippet()
         {
             DbContextOptions<RepositDbContext> options =
                 new DbContextOptionsBuilder<RepositDbContext>()
@@ -190,10 +190,10 @@ namespace TestsReposit
         }
 
         /// <summary>
-        /// Testing to update a category
+        /// Testing to update a full snippet
         /// </summary>
         [Fact]
-        public async void TestToUpdateCategory()
+        public async void TestToUpdateFullSnippet()
         {
             DbContextOptions<RepositDbContext> options =
                 new DbContextOptionsBuilder<RepositDbContext>()
@@ -219,10 +219,10 @@ namespace TestsReposit
         }
 
         /// <summary>
-        /// Testing to delete a category
+        /// Testing to delete a full snippet
         /// </summary>
         [Fact]
-        public async void TestToDeleteCategory()
+        public async void TestToDeleteFullSnippet()
         {
             DbContextOptions<RepositDbContext> options =
                 new DbContextOptionsBuilder<RepositDbContext>()
@@ -243,6 +243,89 @@ namespace TestsReposit
                 var snippetName = await context.FullSnippet.ToListAsync();
 
                 Assert.DoesNotContain(snippet, snippetName);
+            }
+        }
+
+        /// <summary>
+        /// Testing to create and read a category
+        /// </summary>
+        [Fact]
+        public async void TestToCreateAndReadCategory()
+        {
+            DbContextOptions<RepositDbContext> options =
+                new DbContextOptionsBuilder<RepositDbContext>()
+                .UseInMemoryDatabase("GetCategoryTitle")
+                .Options;
+
+            using (RepositDbContext context = new RepositDbContext(options))
+            {
+                Category category = new Category();
+                category.Title = "Binary Tree";
+
+                context.Category.Add(category);
+                context.SaveChanges();
+
+                var categoryTitle = await context.Category.FirstOrDefaultAsync(x => x.Title == category.Title);
+
+                Assert.Equal("Binary Tree", categoryTitle.Title);
+            }
+        }
+
+        /// <summary>
+        /// Testing to update a category
+        /// </summary>
+        [Fact]
+        public async void TestToUpdateCategory()
+        {
+            DbContextOptions<RepositDbContext> options =
+                new DbContextOptionsBuilder<RepositDbContext>()
+                .UseInMemoryDatabase("GetCategoryTitle")
+                .Options;
+
+            using (RepositDbContext context = new RepositDbContext(options))
+            {
+                Category category = new Category();
+                category.Title = "Binary Tree";
+
+                context.Category.Add(category);
+                context.SaveChanges();
+
+                category.Title = "Final Exam";
+
+                context.Category.Update(category);
+                context.SaveChanges();
+
+                var categoryTitle = await context.Category.FirstOrDefaultAsync(x => x.Title == category.Title);
+
+                Assert.Equal("Final Exam", categoryTitle.Title);
+            }
+        }
+
+        /// <summary>
+        /// Testing to delete a category
+        /// </summary>
+        [Fact]
+        public async void TestToDeleteCategory()
+        {
+            DbContextOptions<RepositDbContext> options =
+                new DbContextOptionsBuilder<RepositDbContext>()
+                .UseInMemoryDatabase("GetCategoryTitle")
+                .Options;
+
+            using (RepositDbContext context = new RepositDbContext(options))
+            {
+                Category category = new Category();
+                category.Title = "Binary Tree";
+
+                context.Category.Add(category);
+                context.SaveChanges();
+
+                context.Category.Remove(category);
+                context.SaveChanges();
+
+                var categoryTitle = await context.Category.ToListAsync();
+
+                Assert.DoesNotContain(category, categoryTitle);
             }
         }
     }
