@@ -1,4 +1,5 @@
-﻿using Reposit.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Reposit.Data;
 using Reposit.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,24 +17,39 @@ namespace Reposit.Models.Services
             _context = context;
         }
 
-        public Task AddCategory(string categoryName)
+        public async Task AddCategory(Category newCat)
         {
-            throw new NotImplementedException();
+            _context.Category.Add(newCat);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteCategory()
+        public async Task DeleteCategory(int id)
         {
-            throw new NotImplementedException();
+            Category cat = await GetCategory(id);
+            _context.Category.Remove(cat);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<List<FullSnippet>> GetCategories()
+        public async Task<List<FullSnippet>> GetAllSnippetsFromCategory(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.FullSnippet.Where(snip => snip.CategoryID == id).ToListAsync();
         }
 
-        public Task UpdateCategory(string newName)
+        public async Task<List<Category>> GetCategories()
         {
-            throw new NotImplementedException();
+            return await _context.Category.ToListAsync();
         }
+
+        public async Task<Category> GetCategory(int? id)
+        {
+            return await _context.Category.FirstOrDefaultAsync(cat => cat.ID == id);
+        }
+
+        public async Task UpdateCategory(Category updateCat)
+        {
+            _context.Category.Update(updateCat);
+            await _context.SaveChangesAsync();
+        }
+        
     }
 }

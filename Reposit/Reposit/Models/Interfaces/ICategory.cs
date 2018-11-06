@@ -5,14 +5,18 @@ using System.Threading.Tasks;
 
 namespace Reposit.Models.Interfaces
 {
-    interface ICategory
+    public interface ICategory
     {
-        Task AddCategory(string categoryName);
+        Task AddCategory(Category newCat);
 
-        Task UpdateCategory(string newName);
+        Task UpdateCategory(Category updateCat);
 
-        Task DeleteCategory();
+        Task DeleteCategory(int id);
 
-        Task<List<FullSnippet>> GetCategories();
+        Task<Category> GetCategory(int? id);
+
+        Task<List<Category>> GetCategories();
+
+        Task<List<FullSnippet>> GetAllSnippetsFromCategory(int? id);
     }
 }
