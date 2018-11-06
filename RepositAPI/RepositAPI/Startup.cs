@@ -29,7 +29,7 @@ namespace RepositAPI
         {
             services.AddMvc();
 
-            services.AddDbContext<RepositDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddDbContext<RepositDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:ProductionDB"]));
 
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc(
