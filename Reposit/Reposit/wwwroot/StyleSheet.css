@@ -18,6 +18,24 @@ h6 {
     font-family: 'Montserrat';
 }
 
+#HTML {
+    background-color: red;
+}
+
+#JavaScript {
+    background-color: yellow;
+}
+
+.preview-cards {
+    background-color: darkgray;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.preview-cards:hover {
+    background-color: aquamarine;
+}
+
 hr.star-light,
 hr.star-dark {
     max-width: 15rem;
