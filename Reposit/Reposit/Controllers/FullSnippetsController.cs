@@ -61,7 +61,8 @@ namespace Reposit.Controllers
             if (ModelState.IsValid)
             {
                 await _context.AddSnippet(fullSnippet);
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "FullSnippets", new { id = fullSnippet.ID });
             }
             return View(fullSnippet);
         }
@@ -89,7 +90,7 @@ namespace Reposit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet, int categoryID)
         {
             if (id != fullSnippet.ID)
             {
@@ -113,7 +114,8 @@ namespace Reposit.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Categories", new { id = categoryID });
             }
 
             return View(fullSnippet);
@@ -140,10 +142,11 @@ namespace Reposit.Controllers
         // POST: FullSnippets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int categoryID)
         {
             await _context.DeleteSnippet(id);
-            return RedirectToAction(nameof(Index));
+            //return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Categories", new { id = categoryID });
         }
 
         private bool FullSnippetExists(int id)
