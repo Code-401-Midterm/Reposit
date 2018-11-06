@@ -32,27 +32,14 @@ namespace RepositAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute]int id)
         {
-            var snippet = await _context.Snippets.Include(s => s.Author).FirstOrDefaultAsync(x => x.ID == id);
+            var snippet = await _context.Snippets.FirstOrDefaultAsync(x => x.ID == id);
 
-            //SnippetInfoVM svm = new SnippetInfoVM();
-
-            //svm.Snippet = await _context.Snippets.FirstOrDefaultAsync(x => x.ID == id);
-
-            //svm.Author = await _context.Authors.FirstOrDefaultAsync(s => s.ID == svm.Snippet.AuthorID);
-
-
-            //var snippet = await _context.Snippets.FirstOrDefaultAsync(x => x.ID == id);
             if (snippet == null)
             {
                 return NotFound();
             }
 
-
-            //snippet.Author = await _context.Authors.FirstOrDefaultAsync(s => s.ID == snippet.AuthorID);
-
-
-            //return Ok(snippet);
-            return OkObjectResult();
+            return Ok(snippet);
         }
 
         //Create new Snippet
