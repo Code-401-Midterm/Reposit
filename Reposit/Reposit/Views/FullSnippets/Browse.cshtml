@@ -38,13 +38,60 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
+                           
                             <h5 class="modal-title" id="exampleModalLongTitle">@Html.DisplayFor(modelItem => thing.Title)</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(modelItem => thing.Title)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(modelItem => thing.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(modelItem => thing.Date)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(modelItem => thing.Date)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(modelItem => thing.CodeBody)
+                                </dt>
+                                <dd>
+                                    <pre class="CodeSnippet"><code>
+                                    @Html.DisplayFor(modelItem => thing.CodeBody)
+                                        </code>
+                                    </pre>
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(modelItem => thing.Language)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(modelItem => thing.Language)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(modelItem => thing.Notes)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(modelItem => thing.Notes)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(modelItem => thing.Author)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(modelItem => thing.Author)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(modelItem => thing.Category)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(modelItem => thing.Category.Title)
+                                </dd>
+                            </dl>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
