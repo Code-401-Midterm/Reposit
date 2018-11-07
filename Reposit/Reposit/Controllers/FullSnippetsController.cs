@@ -33,9 +33,10 @@ namespace Reposit.Controllers
         {
             List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
             List<FullSnippet> webDb = await _context.GetSnippets();
+            var allSnippets = apiResults.Concat(webDb).ToList();
             ViewModel output = new ViewModel();
-            output.ApiSnippets = apiResults;
-            output.WebDbSnippets = webDb;
+
+            output.AllSnippets = allSnippets;
             output.CategoryID = id;
             
             return View(output);
@@ -80,6 +81,18 @@ namespace Reposit.Controllers
                 await _context.AddSnippet(fullSnippet);
                 //return RedirectToAction(nameof(Index));
                 return RedirectToAction("Details", "FullSnippets", new { id = fullSnippet.ID });
+            }
+            return View(fullSnippet);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddToCategory([Bind("Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.AddSnippet(fullSnippet);
+                return new EmptyResult();
             }
             return View(fullSnippet);
         }
