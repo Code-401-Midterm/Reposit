@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Reposit.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,15 @@ namespace Reposit.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ICategory _context;
+
+        public HomeController(ICategory context)
         {
-            return View();
+            _context = context;
+        }
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.GetCategories());
         }
 
     }
