@@ -94,6 +94,7 @@
                             </dl>
                         </div>
                         <div class="modal-footer">
+                            @await Html.PartialAsync("_AddToCategory", thing, new ViewDataDictionary(ViewData) { { "CategoryID", Model.CategoryID } })
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
@@ -101,7 +102,7 @@
                 </div>
             </div>
             count++;
-        }
+                            }
     </div>
 
 </div>
