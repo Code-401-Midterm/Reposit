@@ -3,7 +3,9 @@
 @*Will need to grab Model.Snippets as an IEnumerable*@ 
 
 @{
-    ViewData["Title"] = "Details";
+    string quoteName = $"\"{@Model.Title}\"";
+    ViewData["Title"] = @Model.Title;
+    ViewData["Description"] = $"All snippets belonging to the {quoteName} category";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
