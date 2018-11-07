@@ -19,12 +19,54 @@ h6 {
 }
 
 #HTML {
-    background-color: red;
+    background-color: #e34c26;
 }
 
 #JavaScript {
-    background-color: yellow;
+    background-color: #f1e05a;
 }
+
+#C\# {
+    background-color: #178600;
+}
+
+#Swift {
+    background-color: #ffac45;
+}
+
+#Java {
+    background-color: #b07219;
+}
+
+#C+\+ {
+    background-color: #f34b7d;
+}
+
+#Python {
+    background-color: #3572a5;
+}
+
+#PHP {
+    background-color: #4f5d95;
+}
+
+#Scala {
+    background-color: #c22d40;
+}
+
+#Ruby {
+    background-color: #701516;
+}
+
+#CSS {
+    background-color: #563d7c;
+}
+
+#Other {
+    background-color: #2C3E50;
+}
+
+
 
 .preview-cards {
     background-color: ghostwhite;
