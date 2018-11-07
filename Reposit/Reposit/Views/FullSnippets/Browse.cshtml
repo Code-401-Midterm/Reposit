@@ -25,10 +25,9 @@
                     @Html.DisplayFor(modelItem => thing.Notes)
                 </p>
                 <p>
-                    <a asp-action="Details" asp-route-id="@thing.ID">View details »</a>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@("snippet" + count)">
-                        Launch demo modal
+                        View Details
                     </button>
                 </p>
             </div>
@@ -85,18 +84,11 @@
                                 <dd>
                                     @Html.DisplayFor(modelItem => thing.Author)
                                 </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(modelItem => thing.Category)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(modelItem => thing.Category.Title)
-                                </dd>
                             </dl>
                         </div>
                         <div class="modal-footer">
                             @await Html.PartialAsync("_AddToCategory", thing, new ViewDataDictionary(ViewData) { { "CategoryID", Model.CategoryID } })
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            @*<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>*@
                         </div>
                     </div>
                 </div>
