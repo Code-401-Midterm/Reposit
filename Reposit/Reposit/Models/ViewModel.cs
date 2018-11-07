@@ -7,7 +7,9 @@ namespace Reposit.Models
 {
     public class ViewModel
     {
-        public List<FullSnippet> AllSnippets { get; set; }
+        public List<FullSnippet> ApiSnippets { get; set; }
+
+        public List<FullSnippet> WebDbSnippets { get; set; }
 
         public int CategoryID { get; set; }
 
