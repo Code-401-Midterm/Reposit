@@ -31,8 +31,14 @@ namespace Reposit.Controllers
         //It will send a ViewModel object to the FullSnippets Index view
         public async Task<IActionResult> Browse(int id)
         {
-            int categoryId = id;
-            return View(await _context.GetSnippets());
+            List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
+            List<FullSnippet> webDb = await _context.GetSnippets();
+            ViewModel output = new ViewModel();
+            output.ApiSnippets = apiResults;
+            output.WebDbSnippets = webDb;
+            output.CategoryID = id;
+            
+            return View(output);
         }
 
         // GET: FullSnippets/Details/5
