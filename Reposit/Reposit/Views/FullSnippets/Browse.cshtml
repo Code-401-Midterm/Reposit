@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 1;
 }
 
 <h2>Snippets</h2>
@@ -11,23 +12,51 @@
 
     <div class="row">
 
-    @foreach (var thing in Model.ApiSnippets)
-    {
-        <div class="col-md-3 preview-cards ml-5 mb-5">
-            <h4>
-                @Html.DisplayFor(modelItem => thing.Title)
-            </h4>
-            <span class="badge badge-primary mb-4" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
-            
-            <p>
-                @Html.DisplayFor(modelItem => thing.Notes)
-            </p>
-            <p>
-                <a asp-action="Details" asp-route-id="@thing.ID">View details »</a>
-            </p>
-        </div>
-    }
+        @*@for (int i = 0; i < Model.AllSnippets.Count; i++)*@
+        @foreach (var thing in Model.AllSnippets)
+        {
+            <div class="col-md-3 preview-cards ml-5 mb-5">
+                <h4>
+                    @Html.DisplayFor(modelItem => thing.Title)
+                </h4>
+                <span class="badge badge-primary mb-4" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
+
+                <p>
+                    @Html.DisplayFor(modelItem => thing.Notes)
+                </p>
+                <p>
+                    <a asp-action="Details" asp-route-id="@thing.ID">View details »</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@("snippet" + count)">
+                        Launch demo modal
+                    </button>
+                </p>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="@("snippet" + count)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">@Html.DisplayFor(modelItem => thing.Title)</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            count++;
+        }
     </div>
+
 </div>
 
 

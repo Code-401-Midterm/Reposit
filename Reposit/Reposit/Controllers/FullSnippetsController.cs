@@ -33,9 +33,10 @@ namespace Reposit.Controllers
         {
             List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
             List<FullSnippet> webDb = await _context.GetSnippets();
+            var allSnippets = apiResults.Concat(webDb).ToList();
             ViewModel output = new ViewModel();
-            output.ApiSnippets = apiResults;
-            output.WebDbSnippets = webDb;
+
+            output.AllSnippets = allSnippets;
             output.CategoryID = id;
             
             return View(output);
