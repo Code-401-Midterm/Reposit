@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Reposit.Models.FullSnippet>
+﻿@model Reposit.Models.ViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -6,12 +6,14 @@
 }
 
 <h2>Snippets</h2>
-
+<p>
+    <a asp-action="Details" asp-route-id="@Model.CategoryID">Back to category</a> |
+</p>
 <div class="container-fluid">
 
     <div class="row">
 
-    @foreach (var thing in Model)
+    @foreach (var thing in Model.ApiSnippets)
     {
         <div class="col-md-3 preview-cards ml-5 mb-5">
             <h4>

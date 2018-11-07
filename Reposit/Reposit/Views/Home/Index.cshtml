@@ -1,8 +1,26 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Reposit.Models.Category>
+
 @{
     Layout = "_Layout";
 }
 
-<h1>Hi</h1>
+<h1 class="text-center text-uppercase">Categories</h1>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        @foreach (var thing in Model)
+        {
+            <div class="col-md-3 preview-cards ml-5 mb-5">
+                <h4>
+                    @Html.DisplayFor(modelItem => thing.Title)
+                </h4>
+                <p>
+                    <a asp-controller="Categories" asp-action="Details" asp-route-id="@thing.ID">View Snippets »</a>
+                </p>
+            </div>
+        }
+    </div>
+</div>
+
