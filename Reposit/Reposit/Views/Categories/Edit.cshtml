@@ -1,7 +1,8 @@
 ﻿@model Reposit.Models.Category
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = @Model.Title;
+    ViewData["Description"] = $"Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
