@@ -85,6 +85,18 @@ namespace Reposit.Controllers
             return View(fullSnippet);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddToCategory([Bind("Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.AddSnippet(fullSnippet);
+                return new EmptyResult();
+            }
+            return View(fullSnippet);
+        }
+
         // GET: FullSnippets/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

@@ -1,6 +1,6 @@
 ﻿@model Reposit.Models.FullSnippet;
 
-<form method="post" asp-action="Create">
+<form method="post" asp-action="AddToCategory">
     <input type="hidden" asp-for="Title" value="@Model.Title" />
     <input type="hidden" asp-for="Date" value="@Model.Date" />
     <input type="hidden" asp-for="CodeBody" value="@Model.CodeBody" />
@@ -8,5 +8,5 @@
     <input type="hidden" asp-for="Notes" value="@Model.Notes" />
     <input type="hidden" asp-for="Author" value="@Model.Author" />
     <input type="hidden" asp-for="CategoryID" value="@ViewData["CategoryID"]" />
-    <input type="submit" value="Add to Category" data-dismiss="modal" class="btn btn-primary" />
+    <input type="submit" value="Add to Category" class="btn btn-primary" />
 </form>
