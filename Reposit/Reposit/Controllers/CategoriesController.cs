@@ -52,8 +52,6 @@ namespace Reposit.Controllers
         }
 
         // POST: Categories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Title")] Category category)
@@ -61,8 +59,7 @@ namespace Reposit.Controllers
             if (ModelState.IsValid)
             {
                 await _context.AddCategory(category);
-                //return RedirectToAction(nameof(Index));
-                return RedirectToAction("Browse", "FullSnippets", new { id = category.ID });
+                return RedirectToAction("Details", new { id = category.ID });
             }
             return View(category);
         }
