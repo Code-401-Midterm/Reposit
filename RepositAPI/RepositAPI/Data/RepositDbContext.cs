@@ -175,6 +175,49 @@ namespace RepositAPI.Data
                     Language = Language.Python,
                     Notes = "Really old bubble sort in python. Does it even work?",
                     AuthorID = 1
+                },
+                new Snippet
+                {
+                    ID = 7,
+                    Title = "Finding unique emails given email rules",
+                    Date = DateTime.Now,
+                    CodeBody = @"public int numUniqueEmails(String[] emails) {
+                                   Set<String> seen = new HashSet();
+                                   for (String email: emails) {
+                                       int i = email.indexOf('@');
+                                       String local = email.substring(0, i);
+                                       String rest = email.substring(i);
+                                       if (local.contains(""+"")) {
+                                           local = local.substring(0, local.indexOf('+'));
+                                    }
+                                    local = local.replaceAll(""."", "");
+                                       seen.add(local + rest);
+                                   }
+
+                                   return seen.size();
+                               }
+                            }",
+                    Language = Language.Java,
+                    Notes = "Email algorithm using java",
+                    AuthorID = 2
+                },
+                new Snippet
+                {
+                    ID = 8,
+                    Title = "",
+                    Date = DateTime.Now,
+                    CodeBody = @"<form>
+                                  First name:< br >
+                                  < input type = ""text"" name = ""firstname"" value = ""Mickey"" >
+                                  < br >
+                                  Last name:< br >
+                                  < input type = ""text"" name = ""lastname"" value = ""Mouse"" >
+                                  < br >< br >
+                                  < input type = ""submit"" value = ""Submit"" >
+                                </ form > ",
+                    Language = Language.HTML,
+                    Notes = "Simple HTML form from w3schools",
+                    AuthorID = 5
                 }
             );
 
