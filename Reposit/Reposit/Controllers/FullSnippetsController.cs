@@ -26,6 +26,15 @@ namespace Reposit.Controllers
             return View(await _context.GetSnippets());
         }
 
+        //This method will be extensively reworked to shows all API snippets and
+        //all app DB snippets (whose CategoryID != categoryID, with unique titles)
+        //It will send a ViewModel object to the FullSnippets Index view
+        public async Task<IActionResult> Browse(int id)
+        {
+            int categoryId = id;
+            return View(await _context.GetSnippets());
+        }
+
         // GET: FullSnippets/Details/5
         public async Task<IActionResult> Details(int? id)
         {

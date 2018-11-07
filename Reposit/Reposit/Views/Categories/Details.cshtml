@@ -11,7 +11,7 @@
 <hr />
 <p>
     <a asp-controller="FullSnippets" asp-action="Create">Create New</a>
-    <a asp-action="Index" asp-controller="FullSnippets">Browse Snippet Library</a>
+    <a asp-controller="FullSnippets" asp-action="Browse" asp-route-id="@Model.ID" >Browse Snippet Library</a>
 </p>
 <div>
     <h4>Snippets</h4>
