@@ -61,7 +61,8 @@ namespace Reposit.Controllers
             if (ModelState.IsValid)
             {
                 await _context.AddCategory(category);
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Browse", "FullSnippets", new { id = category.ID });
             }
             return View(category);
         }
