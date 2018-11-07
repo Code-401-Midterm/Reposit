@@ -54,9 +54,11 @@ namespace Reposit.Controllers
         }
 
         // GET: FullSnippets/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewData["CategoryID"] = new SelectList(_context.GetAllCategories(), "ID", "Title");
+            int categoryID = id;
+            //ViewData["CategoryID"] = new SelectList(_context.GetAllCategories(), "ID", "Title");
+            ViewData["CategoryID"] = categoryID;
             return View();
         }
 
@@ -65,7 +67,7 @@ namespace Reposit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
+        public async Task<IActionResult> Create([Bind("Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
         {
             if (ModelState.IsValid)
             {

@@ -10,7 +10,7 @@
 <h2>@Html.DisplayFor(model => model.Title)</h2>
 <hr />
 <p>
-    <a asp-controller="FullSnippets" asp-action="Create">Create New</a>
+    <a asp-controller="FullSnippets" asp-action="Create" asp-route-id="@Model.ID">Create New</a>
     <a asp-controller="FullSnippets" asp-action="Browse" asp-route-id="@Model.ID" >Browse Snippet Library</a>
 </p>
 <div>
