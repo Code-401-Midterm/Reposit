@@ -138,7 +138,7 @@ namespace RepositAPI.Data
                 new Snippet
                 {
                     ID = 6,
-                    Title = "",
+                    Title = "Bubblesort",
                     Date = DateTime.Now,
                     CodeBody = @"def bubbleUp(arr):
                                     swapped = True
