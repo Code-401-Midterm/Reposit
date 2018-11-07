@@ -21,11 +21,16 @@ namespace Reposit.Controllers
         }
 
         // GET: FullSnippets
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            await _context.GetSnippetsFromAPI().
-            await _context.GetSnippets();
-            return View();
+            List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
+            List<FullSnippet> webDb = await _context.GetSnippets();
+            ViewModel output = new ViewModel();
+            output.ApiSnippets = apiResults;
+            output.WebDbSnippets = webDb;
+            output.CategoryID = id;
+            
+            return View(output);
         }
 
         // GET: FullSnippets/Details/5
