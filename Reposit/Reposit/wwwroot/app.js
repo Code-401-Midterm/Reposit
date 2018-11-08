@@ -1,6 +1,30 @@
 ﻿(function ($) {
     "use strict"; // Start of use strict
 
+    //Hides raw snippet
+    $(".snip").hide();
+
+    //Event listener for copy
+    $(".copyButton").on("click", function () {
+        copyToClipboard();
+    });
+
+    //Copy to clipboard
+    function copyToClipboard() {
+        //Text body. Shows raw snippet briefly until selection and copy is completed
+        $(".snip").show();
+        var $textToCopy = $('.snip');
+
+        //Select the text body
+        $textToCopy.select();
+
+        //Copy the text
+        document.execCommand("copy");
+
+        //Hide text again
+        $(".snip").hide();
+    }
+
     // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -71,5 +95,4 @@
             $(this).removeClass("floating-label-form-group-with-focus");
         });
     });
-
 })(jQuery); // End of use strict
