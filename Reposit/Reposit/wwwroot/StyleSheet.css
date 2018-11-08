@@ -23,6 +23,10 @@ h6 {
     padding-bottom: 2rem;
 }
 
+#CodeSnippet {
+    margin: -30px 0;
+}
+
 #HTML {
     background-color: #e34c26;
 }
@@ -126,7 +130,7 @@ hr.star-dark {
     }
 
 section {
-    padding: 6rem 0;
+    padding: 3rem 0;
 }
 
     section h2 {
