@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Browse";
-    ViewData["Description"] = "Add a Snippet from the API to your Category";
+    ViewData["Description"] = $"Add a Snippet from the API to {@Model.Category.Title} ";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int count = 1;
 }
@@ -13,7 +13,7 @@
 </p>
 <div class="container-fluid">
     <form method="post">
-        <label>Search by Title:</label>
+        <label>Search by Title @Html.DisplayFor(model => model.Category.ID):</label>
         <input type="text" placeholder="Enter search term here" name="searchTerm" />
         <input type="hidden" name="id" value="@Model.Category.ID"/>
         <button type="submit">Search</button>
