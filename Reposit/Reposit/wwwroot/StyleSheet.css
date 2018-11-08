@@ -28,6 +28,15 @@ h6 {
     padding-left: 20px;
 }
 
+.card-button{
+    position: absolute;
+    bottom: 10px;
+}
+
+.card-text {
+    margin-bottom: 3rem;
+}
+
 #HTML {
     background-color: #e34c26;
 }

@@ -21,7 +21,6 @@
 
     <div class="row">
 
-        @*@for (int i = 0; i < Model.AllSnippets.Count; i++)*@
         @foreach (var thing in Model.AllSnippets)
         {
             <div class="col-md-3 preview-cards ml-5 mb-5">
@@ -30,12 +29,12 @@
                 </h4>
                 <span class="badge badge-primary mb-4" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
 
-                <p>
+                <p class="card-text">
                     @Html.DisplayFor(modelItem => thing.Notes)
                 </p>
                 <p>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@("snippet" + count)">
+                    <button type="button" class="btn btn-primary card-button" data-toggle="modal" data-target="#@("snippet" + count)">
                         View Details
                     </button>
                 </p>
@@ -97,7 +96,6 @@
                         </div>
                         <div class="modal-footer">
                             @await Html.PartialAsync("_AddToCategory", thing, new ViewDataDictionary(ViewData) { { "CategoryID", Model.CategoryID } })
-                            @*<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>*@
                         </div>
                     </div>
                 </div>
