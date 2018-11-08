@@ -12,8 +12,6 @@ namespace Reposit.Models
         [Required(ErrorMessage = "This field is required")]
         public string Title { get; set; }
         [Required(ErrorMessage = "This field is required")]
-        public DateTime Date { get; set; }
-        [Required(ErrorMessage = "This field is required")]
         public string CodeBody { get; set; }
         [Required(ErrorMessage = "This field is required")]
         public Language Language { get; set; }

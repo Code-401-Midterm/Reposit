@@ -153,7 +153,7 @@ namespace Reposit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
+        public async Task<IActionResult> Create([Bind("Title,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
         {
             if (ModelState.IsValid)
             {
@@ -166,7 +166,7 @@ namespace Reposit.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddToCategory([Bind("Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
+        public async Task<ActionResult> AddToCategory([Bind("Title,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
         {
             if (ModelState.IsValid)
             {
@@ -199,7 +199,7 @@ namespace Reposit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet, int categoryID)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet, int categoryID)
         {
             if (id != fullSnippet.ID)
             {
