@@ -5,56 +5,51 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RepositAPI.Data;
+using Reposit.Data;
 
-namespace RepositAPI.Migrations
+namespace Reposit.Migrations
 {
     [DbContext(typeof(RepositDbContext))]
-    [Migration("20181106032529_init")]
-    partial class init
+    [Migration("20181108011049_aksdaj")]
+    partial class aksdaj
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RepositAPI.Models.Author", b =>
+            modelBuilder.Entity("Reposit.Models.Category", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Title")
                         .IsRequired();
 
                     b.HasKey("ID");
 
-                    b.ToTable("Authors");
-
-                    b.HasData(
-                        new { ID = 1, Name = "Jeff" },
-                        new { ID = 2, Name = "Kendra" },
-                        new { ID = 3, Name = "Richard" },
-                        new { ID = 4, Name = "Allisa" },
-                        new { ID = 5, Name = "Jeremy" }
-                    );
+                    b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("RepositAPI.Models.Snippet", b =>
+            modelBuilder.Entity("Reposit.Models.FullSnippet", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AuthorID");
+                    b.Property<string>("Author")
+                        .IsRequired();
+
+                    b.Property<int>("CategoryID");
 
                     b.Property<string>("CodeBody")
                         .IsRequired();
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Language");
@@ -66,21 +61,16 @@ namespace RepositAPI.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("AuthorID");
+                    b.HasIndex("CategoryID");
 
-                    b.ToTable("Snippets");
-
-                    b.HasData(
-                        new { ID = 1, AuthorID = 1, CodeBody = "Console.WriteLine(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 19, 25, 29, 44, DateTimeKind.Local), Language = 8, Notes = "This is cool.", Title = "Hello World console writeline" },
-                        new { ID = 2, AuthorID = 2, CodeBody = "Print(\"Hello World!\")", DateCreated = new DateTime(2018, 11, 5, 19, 25, 29, 46, DateTimeKind.Local), Language = 4, Notes = "This is cooler", Title = "Hello World python" }
-                    );
+                    b.ToTable("FullSnippet");
                 });
 
-            modelBuilder.Entity("RepositAPI.Models.Snippet", b =>
+            modelBuilder.Entity("Reposit.Models.FullSnippet", b =>
                 {
-                    b.HasOne("RepositAPI.Models.Author")
+                    b.HasOne("Reposit.Models.Category", "Category")
                         .WithMany("Snippets")
-                        .HasForeignKey("AuthorID")
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

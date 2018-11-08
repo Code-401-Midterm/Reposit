@@ -36,7 +36,7 @@ namespace RepositAPI.Controllers
                         Title = snippet.Title,
                         DateCreated = snippet.Date,
                         CodeBody = snippet.CodeBody,
-                        Language = snippet.Language,
+                        Language = snippet.Language.ToString(),
                         Notes = snippet.Notes,
                         Author = snippet.Author.Name,
                         AuthorID = snippet.AuthorID
@@ -60,7 +60,7 @@ namespace RepositAPI.Controllers
                                     Title = s.Title,
                                     DateCreated = s.Date,
                                     CodeBody = s.CodeBody,
-                                    Language = s.Language,
+                                    Language = s.Language.ToString(),
                                     Notes = s.Notes,
                                     Author = s.Author.Name,
                                     AuthorID = s.AuthorID
