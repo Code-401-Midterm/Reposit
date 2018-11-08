@@ -136,6 +136,10 @@ namespace Reposit.Controllers
                 return NotFound();
             }
 
+            Category category = await _context.GetCategoryByID(fullSnippet.CategoryID);
+
+            fullSnippet.Category = category;
+
             return View(fullSnippet);
         }
 
