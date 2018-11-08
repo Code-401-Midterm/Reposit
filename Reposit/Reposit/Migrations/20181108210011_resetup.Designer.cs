@@ -9,8 +9,8 @@ using Reposit.Data;
 namespace Reposit.Migrations
 {
     [DbContext(typeof(RepositDbContext))]
-    [Migration("20181108204840_removeDate")]
-    partial class removeDate
+    [Migration("20181108210011_resetup")]
+    partial class resetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
