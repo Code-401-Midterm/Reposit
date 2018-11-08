@@ -1,7 +1,8 @@
 ﻿@model Reposit.Models.ViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Browse";
+    ViewData["Description"] = $"Add a Snippet from the API to category \"{@Model.CategoryTitle}\" ";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int count = 1;
 }
@@ -20,32 +21,32 @@
 
     <div class="row">
 
-        @*@for (int i = 0; i < Model.AllSnippets.Count; i++)*@
         @foreach (var thing in Model.AllSnippets)
         {
-            <div class="col-md-3 preview-cards ml-5 mb-5">
-                <h4>
-                    @Html.DisplayFor(modelItem => thing.Title)
-                </h4>
-                <span class="badge badge-primary mb-4" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
+            <div class="col-md-4 mb-5">
+                <div class="p-4 preview-cards position-relative h-100">
+                    <h4>
+                        @Html.DisplayFor(modelItem => thing.Title)
+                    </h4>
+                    <span class="badge badge-primary mb-4" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
 
-                <p>
-                    @Html.DisplayFor(modelItem => thing.Notes)
-                </p>
-                <p>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@("snippet" + count)">
-                        View Details
-                    </button>
-                </p>
+                    <p class="card-text">
+                        @Html.DisplayFor(modelItem => thing.Notes)
+                    </p>
+                    <p>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary card-button" data-toggle="modal" data-target="#@("snippet" + count)">
+                            View Details
+                        </button>
+                    </p>
+                </div>
             </div>
 
             <!-- Modal -->
             <div class="modal fade" id="@("snippet" + count)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                           
                             <h5 class="modal-title" id="exampleModalLongTitle">@Html.DisplayFor(modelItem => thing.Title)</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -53,28 +54,25 @@
                         </div>
                         <div class="modal-body">
                             <dl class="dl-horizontal">
-                                <dt>
-                                    @Html.DisplayNameFor(modelItem => thing.Title)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(modelItem => thing.Title)
-                                </dd>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <dt>
+                                            @Html.DisplayNameFor(modelItem => thing.Author): <span>@Html.DisplayFor(modelItem => thing.Author)</span>
+                                        </dt>
+                                    </div>
+                                    <div class="col-md-6">
+                                            <span class="badge badge-primary mb-4 float-right" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
+                                    </div>
+                                </div>
+
                                 <dt>
                                     @Html.DisplayNameFor(modelItem => thing.CodeBody)
                                 </dt>
                                 <dd>
                                     <pre class="CodeSnippet"><code>
-                                    @Html.DisplayFor(modelItem => thing.CodeBody)
-                                        </code>
-                                    </pre>
-                                    @*<textarea class="snip">@Html.DisplayFor(modelItem => thing.CodeBody)</textarea>*@
-                                    <button class="copyButton">Copy Snippet!</button>
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(modelItem => thing.Language)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(modelItem => thing.Language)
+                                @Html.DisplayFor(modelItem => thing.CodeBody)
+                                    </code>
+                                </pre>
                                 </dd>
                                 <dt>
                                     @Html.DisplayNameFor(modelItem => thing.Notes)
@@ -82,17 +80,10 @@
                                 <dd>
                                     @Html.DisplayFor(modelItem => thing.Notes)
                                 </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(modelItem => thing.Author)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(modelItem => thing.Author)
-                                </dd>
                             </dl>
                         </div>
                         <div class="modal-footer">
-                            @await Html.PartialAsync("_AddToCategory", thing, new ViewDataDictionary(ViewData) { { "CategoryID", Model.CategoryID } })
-                            @*<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>*@
+                            @await Html.PartialAsync("_AddToCategory", thing, new ViewDataDictionary(ViewData) { { "CategoryID", Model.CategoryID }, { "CategoryTitle", Model.CategoryTitle } })
                         </div>
                     </div>
                 </div>

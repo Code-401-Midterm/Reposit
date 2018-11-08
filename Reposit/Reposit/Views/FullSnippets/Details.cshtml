@@ -1,61 +1,58 @@
 ﻿@model Reposit.Models.FullSnippet
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = @Model.Title;
+    ViewData["Description"] = $"Created by: \"{ @Model.Author }\".";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+@*<h2>@Html.DisplayFor(model => model.Title)</h2>*@
 
 <div>
-    <h4>FullSnippet</h4>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm">
+                <span class="badge badge-primary mb-4" id="@Html.DisplayFor(model => model.Language)"><h6>@Html.DisplayFor(model => model.Language)</h6></span>
+            </div>
+            <div class="col-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Category.Title)
+                </dd>
+            </div>
+        </div>
+    </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CodeBody)
-        </dt>
-        <dd>
-            <pre class="CodeSnippet"><code>
-            @Html.DisplayFor(model => model.CodeBody)
-                </code>
-            </pre>
-            <textarea class="snip">@Html.DisplayFor(model => model.CodeBody)</textarea>
-            <button class="copyButton">Copy Snippet!</button>
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Language)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Language)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Category.Title)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-controller="Categories" asp-action="Details" asp-route-id="@Model.CategoryID">Back to List</a> |
-    <a asp-action="Delete" asp-route-id="@Model.ID">Delete</a>
+
+    <div class="row">
+        <div class="col-sm-8">
+            <dd>
+                <pre id="CodeSnippet">
+                <code>
+                        @Html.DisplayFor(model => model.CodeBody)
+                    </code>
+                </pre>
+            </dd>
+        </div>
+        <div class="col-sm-4">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Notes)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Notes)
+            </dd>
+        </div>
+    </div>
+    <dl class="dl-horizontal"></dl>
+    <div class="row mb-4">
+        <div class="col-sm-12 text-center">
+            <a asp-controller="Categories" asp-action="Details" asp-route-id="@Model.CategoryID"><h6 class="d-inline">Back to Category</h6></a>
+            <a asp-action="Edit" class="ml-4" asp-route-id="@Model.ID"><h6 class="d-inline">Edit</h6></a>
+            <a asp-action="Delete" class="ml-4" asp-route-id="@Model.ID"><h6 class="d-inline">Delete</h6></a>
+        </div>
+    </div>
 </div>

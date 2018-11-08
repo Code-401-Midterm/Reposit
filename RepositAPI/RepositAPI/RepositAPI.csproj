@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\allisalebeuf\Projects401\Project\RepositAPI\RepositAPI\RepositAPI.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\Kendragon\codefellows\401\Project\RepositAPI\RepositAPI\RepositAPI.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
