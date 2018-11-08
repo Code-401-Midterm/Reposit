@@ -16,9 +16,6 @@ namespace Reposit.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<FullSnippet>()
-            .Property(f => f.Date)
-            .HasColumnType("datetime2");
         }
 
         public DbSet<Category> Category { get; set; }
