@@ -34,7 +34,7 @@ namespace Reposit
 
             services.AddDbContext<RepositDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("ProductionDB"));
             });
 
             services.AddTransient<IFullSnippets, FullSnippetService>();

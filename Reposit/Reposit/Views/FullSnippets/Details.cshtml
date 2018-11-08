@@ -1,55 +1,69 @@
 ﻿@model Reposit.Models.FullSnippet
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = @Model.Title;
+    ViewData["Description"] = $"Created by { @Model.Author }.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+@*<h2>@Html.DisplayFor(model => model.Title)</h2>*@
 
 <div>
-    <h4>FullSnippet</h4>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Category.Title)
+                </dd>
+            </div>
+            <div class="col-sm">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Date)
+                </dd>
+            </div>
+        </div>
+    </div>
+
+
+
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CodeBody)
-        </dt>
-        <dd>
-            <pre class="CodeSnippet"><code>
+
+    <div class="row">
+        <div class="col-sm-8">
+            <div>
+                <span class="badge badge-primary mb-4" id="@Html.DisplayFor(model => model.Language)">@Html.DisplayFor(model => model.Language)</span>
+
+            </div>
+            <dt class="text-center">
+                Code Body
+            </dt>
+            <dd>
+                <pre class="CodeSnippet"><code>
             @Html.DisplayFor(model => model.CodeBody)
                 </code>
             </pre>
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Language)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Language)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Category.Title)
-        </dd>
+            </dd>
+        </div>
+        <div class="col-sm-4">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Notes)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Notes)
+            </dd>
+        </div>
+    </div>
+    <dl class="dl-horizontal">
+
     </dl>
 </div>
 <div>
