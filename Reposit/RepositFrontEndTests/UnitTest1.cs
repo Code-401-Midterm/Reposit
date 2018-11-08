@@ -331,6 +331,9 @@ namespace TestsReposit
             }
         }
 
+        /// <summary>
+        /// Test to get ViewModel AllSnippet list property
+        /// </summary>
         [Fact]
         public void GetViewModelAllSnippetList()
         {
@@ -347,6 +350,9 @@ namespace TestsReposit
             Assert.Contains(fs1, viewModel.AllSnippets);
         }
 
+        /// <summary>
+        /// Test to set ViewModel AllSnippet list property
+        /// </summary>
         [Fact]
         public void SetViewModelAllSnippetList()
         {
@@ -364,6 +370,9 @@ namespace TestsReposit
             Assert.DoesNotContain(fs2, list);
         }
 
+        /// <summary>
+        /// Test to get ViewModel category ID
+        /// </summary>
         [Fact]
         public void GetViewModelCategoryID()
         {
@@ -373,6 +382,9 @@ namespace TestsReposit
             Assert.Equal(23, viewModel.CategoryID);
         }
 
+        /// <summary>
+        /// Test to set ViewModel category ID
+        /// </summary>
         [Fact]
         public void SetViewModelCategoryID()
         {
