@@ -66,9 +66,17 @@ namespace Reposit.Models.Services
                     response.EnsureSuccessStatusCode();
 
                     var stringResult = await response.Content.ReadAsStringAsync();
-                    var rawSnippet = JsonConvert.DeserializeObject<List<FullSnippet>>(stringResult);
+                    var rawSnippets = JsonConvert.DeserializeObject<List<FullSnippet>>(stringResult);
+                    
+                    foreach (var item in rawSnippets)
+                    {
+                        Language language = (Language)Enum.Parse(typeof(Language), item.Language.ToString(), true);
+                        item.Language = language;
+                        //Enum.TryParse(item.Language, true, out language);
 
-                    return rawSnippet;
+                    }
+
+                    return rawSnippets;
 
                 }
                 catch (Exception)

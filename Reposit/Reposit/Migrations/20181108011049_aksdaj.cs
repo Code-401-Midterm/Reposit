@@ -2,7 +2,7 @@
 
 namespace Reposit.Migrations
 {
-    public partial class apiChangedModelProps : Migration
+    public partial class aksdaj : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

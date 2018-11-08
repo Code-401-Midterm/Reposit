@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Reposit.Migrations
 {
-    public partial class initial : Migration
+    public partial class update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,12 +27,12 @@ namespace Reposit.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    CodeBody = table.Column<string>(nullable: true),
-                    Language = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CodeBody = table.Column<string>(nullable: false),
+                    Language = table.Column<int>(nullable: false),
                     Notes = table.Column<string>(nullable: true),
-                    Author = table.Column<string>(nullable: true),
+                    Author = table.Column<string>(nullable: false),
                     CategoryID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
