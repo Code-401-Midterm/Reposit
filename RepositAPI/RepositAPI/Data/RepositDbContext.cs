@@ -255,7 +255,7 @@ const newPatient = (req, res) => {
                     ID = 10,
                     Title = "SQL",
                     Date = DateTime.Now,
-                    CodeBody = @"SELECT * FROM myTable",
+                    CodeBody = "SELECT * FROM myTable",
                     Language = Language.Other,
                     Notes = "Simple sql query. * means everything!",
                     AuthorID = 3
