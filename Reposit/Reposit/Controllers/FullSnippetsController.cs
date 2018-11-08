@@ -29,7 +29,7 @@ namespace Reposit.Controllers
         //This method will be extensively reworked to shows all API snippets and
         //all app DB snippets (whose CategoryID != categoryID, with unique titles)
         //It will send a ViewModel object to the FullSnippets Index view
-        public async Task<IActionResult> Browse(int id)
+        public async Task<IActionResult> Browse(Category category)
         {
             List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
             List<FullSnippet> webDb = await _context.GetSnippets();
@@ -38,9 +38,9 @@ namespace Reposit.Controllers
             ViewModel output = new ViewModel();
 
             //all snippets from web and from API
-            allSnippets = allSnippets.Where(x => x.CategoryID != id).ToList();
+            allSnippets = allSnippets.Where(x => x.CategoryID != category.ID).ToList();
 
-            var categorySnips = webDb.Where(x => x.CategoryID == id).ToList();
+            var categorySnips = webDb.Where(x => x.CategoryID == category.ID).ToList();
 
 
             var uniqueSnips = new List<FullSnippet>();
@@ -63,7 +63,7 @@ namespace Reposit.Controllers
                   .ToList();
 
             output.AllSnippets = uniqueSnippets;
-            output.CategoryID = id;
+            output.Category = category;
 
 
             
@@ -76,7 +76,7 @@ namespace Reposit.Controllers
         /// </summary>
         /// <param name="searchTerm">Search Term</param>
         /// <returns></returns>
-        public async Task<IActionResult> Browse(int id, string searchTerm)
+        public async Task<IActionResult> Browse(Category category, string searchTerm)
         {
 
             List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
@@ -87,8 +87,8 @@ namespace Reposit.Controllers
             ViewModel output = new ViewModel();
 
             //all snippets from web and from API
-            allSnippets = allSnippets.Where(x => x.CategoryID != id).ToList();
-            var categorySnips = webDb.Where(x => x.CategoryID == id).ToList();
+            allSnippets = allSnippets.Where(x => x.CategoryID != category.ID).ToList();
+            var categorySnips = webDb.Where(x => x.CategoryID == category.ID).ToList();
 
             var uniqueSnips = new List<FullSnippet>();
 
@@ -112,7 +112,7 @@ namespace Reposit.Controllers
             var searchResult = uniqueSnippets.Where(x => x.Title.ToLower().Contains(searchTerm.ToLower())).ToList();
 
             output.AllSnippets = searchResult;
-            output.CategoryID = id;
+            output.Category = category;
 
             return View(output);
         }
