@@ -10,7 +10,6 @@ namespace RepositAPI.Models
     {
         public int ID { get; set; }
         public string Title { get; set; }
-        public DateTime DateCreated { get; set; }
         public string CodeBody { get; set; }
         public string Language { get; set; }
         public string Notes { get; set; }
