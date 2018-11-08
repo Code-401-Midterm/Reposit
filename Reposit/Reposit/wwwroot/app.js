@@ -72,9 +72,4 @@
         });
     });
 
-    //HLJS
-    $('pre code').each(function (i, block) {
-        hljs.highlightBlock(block);
-    });
-
 })(jQuery); // End of use strict
