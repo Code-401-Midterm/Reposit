@@ -10,14 +10,24 @@ namespace TestAuthors
     public class UnitTest1
     {
         /// <summary>
-        /// Tests getters and setters for Author model
+        /// Tests getters for Author model
         /// </summary>
         [Fact]
-        public void AuthorCanGetAndSetTest()
+        public void AuthorCanGetTest()
         {
             Author author = new Author();
             author.Name = "El Champ";
             Assert.Equal("El Champ", author.Name);
+        }
+
+        /// <summary>
+        /// Tests setters for Author model
+        /// </summary>
+        [Fact]
+        public void AuthorCanSetTest()
+        {
+            Author author = new Author();
+            author.Name = "El Champ";
 
             author.Name = "Pug";
             Assert.Equal("Pug", author.Name);
@@ -58,9 +68,8 @@ namespace TestAuthors
                 var author = await context.Authors.FirstOrDefaultAsync(x => x.Name == a.Name);
 
                 var authors = await context.Authors.ToArrayAsync();
+
                 //Assert
-                Assert.Equal(a.Name, author.Name);
-                Assert.Equal(a.ID, author.ID);
                 Assert.Equal(authors, testList);
             }
         }
