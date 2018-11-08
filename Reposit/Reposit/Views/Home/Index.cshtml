@@ -6,23 +6,30 @@
     Layout = "_Layout";
 }
 
-<h1 class="text-center text-uppercase">Categories</h1>
+<h4 class="text-uppercase">Welcome back, Kendra!</h4>
+<h5 class="">I hate everything</h5>
+<hr />
 
 <div class="container-fluid">
-
     <div class="row">
 
         @foreach (var thing in Model)
         {
-            <div class="col-md-3 preview-cards ml-5 mb-5">
-                <h4>
-                    @Html.DisplayFor(modelItem => thing.Title)
-                </h4>
-                <p>
-                    <a asp-controller="Categories" asp-action="Details" asp-route-id="@thing.ID">View Snippets »</a>
-                </p>
+            <div class="col-md-4 mb-5">
+                <div class="p-4 preview-cards position-relative h-100">
+                    <h4>
+                        @Html.DisplayFor(modelItem => thing.Title)
+                    </h4>
+                    <p>
+                        <a asp-controller="Categories" asp-action="Details" asp-route-id="@thing.ID">View Snippets »</a>
+                    </p>
+                </div>
             </div>
         }
-    </div>
-</div>
+
+        <div class="col-md-4 mb-5">
+            <div class="p-4 preview-cards position-relative h-100 bg-primary">
+                <h1 style="font-size: 4.5em" class="add-category-card text-center align-middle text-white">&#43;</h1>
+            </div>
+        </div>
 
