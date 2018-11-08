@@ -33,17 +33,92 @@ namespace Reposit.Controllers
         {
             List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
             List<FullSnippet> webDb = await _context.GetSnippets();
+
             var allSnippets = apiResults.Concat(webDb).ToList();
             ViewModel output = new ViewModel();
 
-            output.AllSnippets = allSnippets;
+            //all snippets from web and from API
+            allSnippets = allSnippets.Where(x => x.CategoryID != id).ToList();
+
+            var categorySnips = webDb.Where(x => x.CategoryID == id).ToList();
+
+
+            var uniqueSnips = new List<FullSnippet>();
+
+            foreach (var allSnip in allSnippets)
+            {
+                int counter = 0;
+                foreach (var catSnip in categorySnips)
+                {
+                    if (allSnip.Title == catSnip.Title && allSnip.CodeBody == catSnip.CodeBody) counter++;
+                }
+
+                if (counter == 0) uniqueSnips.Add(allSnip);
+            }
+
+
+            var uniqueSnippets = uniqueSnips
+                  .GroupBy(p => p.Title)
+                  .Select(g => g.First())
+                  .ToList();
+
+            output.AllSnippets = uniqueSnippets;
             output.CategoryID = id;
+
+
             
             return View(output);
         }
 
-        // GET: FullSnippets/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpPost]
+        /// <summary>
+        /// Searching Snippets
+        /// </summary>
+        /// <param name="searchTerm">Search Term</param>
+        /// <returns></returns>
+        public async Task<IActionResult> Browse(int id, string searchTerm)
+        {
+
+            List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
+            List<FullSnippet> webDb = await _context.GetSnippets();
+
+            var allSnippets = apiResults.Concat(webDb).ToList();
+
+            ViewModel output = new ViewModel();
+
+            //all snippets from web and from API
+            allSnippets = allSnippets.Where(x => x.CategoryID != id).ToList();
+            var categorySnips = webDb.Where(x => x.CategoryID == id).ToList();
+
+            var uniqueSnips = new List<FullSnippet>();
+
+            foreach (var allSnip in allSnippets)
+            {
+                int counter = 0;
+                foreach (var catSnip in categorySnips)
+                {
+                    if (allSnip.Title == catSnip.Title && allSnip.CodeBody == catSnip.CodeBody) counter++;
+                }
+
+                if (counter == 0) uniqueSnips.Add(allSnip);
+            }
+
+
+            var uniqueSnippets = uniqueSnips
+                  .GroupBy(p => p.Title)
+                  .Select(g => g.First())
+                  .ToList();
+
+            var searchResult = uniqueSnippets.Where(x => x.Title.ToLower().Contains(searchTerm.ToLower())).ToList();
+
+            output.AllSnippets = searchResult;
+            output.CategoryID = id;
+
+            return View(output);
+        }
+
+            // GET: FullSnippets/Details/5
+            public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -92,7 +167,7 @@ namespace Reposit.Controllers
             if (ModelState.IsValid)
             {
                 await _context.AddSnippet(fullSnippet);
-                return new EmptyResult();
+                return RedirectToAction("Browse", "FullSnippets", new { id = fullSnippet.CategoryID });
             }
             return View(fullSnippet);
         }
