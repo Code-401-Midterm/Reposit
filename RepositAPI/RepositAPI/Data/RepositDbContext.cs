@@ -16,11 +16,6 @@ namespace RepositAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Sets date in sql database correctly
-            modelBuilder.Entity<Snippet>()
-            .Property(f => f.Date)
-            .HasColumnType("datetime2");
-
             modelBuilder.Entity<Author>().HasData(
                 new Author {
                     ID = 1,
@@ -54,7 +49,6 @@ namespace RepositAPI.Data
                 {
                     ID = 1,
                     Title = "Hello World console writeline",
-                    Date = DateTime.Now,
                     CodeBody = "Console.WriteLine(\"Hello World!\")",
                     Language = Language.Csharp,
                     Notes = "This is cool.",
@@ -64,7 +58,6 @@ namespace RepositAPI.Data
                 {
                     ID = 2,
                     Title = "Hello World python",
-                    Date = DateTime.Now,
                     CodeBody = "Print(\"Hello World!\")",
                     Language = Language.Python,
                     Notes = "This is cooler",
@@ -74,7 +67,6 @@ namespace RepositAPI.Data
                 {
                     ID = 3,
                     Title = "Node",
-                    Date = DateTime.Now,
                     CodeBody = @"
 public class Node
 {
@@ -95,7 +87,6 @@ public class Node
                 {
                     ID = 4,
                     Title = "Binary search",
-                    Date = DateTime.Now,
                     CodeBody = @"
 public static int BinarySearchArray(int[] arr, int val)
 {
@@ -128,7 +119,6 @@ public static int BinarySearchArray(int[] arr, int val)
                 {
                     ID = 5,
                     Title = "Array.Prototype.Map()",
-                    Date = DateTime.Now,
                     CodeBody = @"
 const mapTwoToThe = (input) => 
 {
@@ -142,7 +132,6 @@ const mapTwoToThe = (input) =>
                 {
                     ID = 6,
                     Title = "Bubblesort",
-                    Date = DateTime.Now,
                     CodeBody = @"
 def bubbleUp(arr):
     swapped = True
@@ -184,7 +173,6 @@ bubbleDown(x)",
                 {
                     ID = 7,
                     Title = "Finding unique emails given email rules",
-                    Date = DateTime.Now,
                     CodeBody = @"
 public int numUniqueEmails(String[] emails) 
 {
@@ -212,7 +200,6 @@ public int numUniqueEmails(String[] emails)
                 {
                     ID = 8,
                     Title = "Html form",
-                    Date = DateTime.Now,
                     CodeBody = @"
 <form>
     First name:< br >
@@ -231,7 +218,6 @@ public int numUniqueEmails(String[] emails)
                 {
                     ID = 9,
                     Title = "Superagent",
-                    Date = DateTime.Now,
                     CodeBody = @"
 const newPatient = (req, res) => {
     let SQL = 'INSERT INTO patients (first_name, last_name) VALUES ($1,$2) ON CONFLICT DO NOTHING RETURNING id';
@@ -254,7 +240,6 @@ const newPatient = (req, res) => {
                 {
                     ID = 10,
                     Title = "SQL",
-                    Date = DateTime.Now,
                     CodeBody = "SELECT * FROM myTable",
                     Language = Language.Other,
                     Notes = "Simple sql query. * means everything!",

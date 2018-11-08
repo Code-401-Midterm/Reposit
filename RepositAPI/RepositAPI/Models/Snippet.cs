@@ -13,8 +13,6 @@ namespace RepositAPI.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public DateTime Date{ get; set; }
-        [Required]
         public string CodeBody { get; set; }
         [Required]
         public Language Language { get; set; }
