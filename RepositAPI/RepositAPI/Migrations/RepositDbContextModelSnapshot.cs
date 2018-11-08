@@ -69,8 +69,8 @@ namespace RepositAPI.Migrations
                     b.ToTable("Snippets");
 
                     b.HasData(
-                        new { ID = 1, AuthorID = 1, CodeBody = "Console.WriteLine(\"Hello World!\")", Date = new DateTime(2018, 11, 7, 16, 44, 37, 287, DateTimeKind.Local), Language = 8, Notes = "This is cool.", Title = "Hello World console writeline" },
-                        new { ID = 2, AuthorID = 2, CodeBody = "Print(\"Hello World!\")", Date = new DateTime(2018, 11, 7, 16, 44, 37, 290, DateTimeKind.Local), Language = 4, Notes = "This is cooler", Title = "Hello World python" },
+                        new { ID = 1, AuthorID = 1, CodeBody = "Console.WriteLine(\"Hello World!\")", Date = new DateTime(2018, 11, 7, 16, 49, 17, 100, DateTimeKind.Local), Language = 8, Notes = "This is cool.", Title = "Hello World console writeline" },
+                        new { ID = 2, AuthorID = 2, CodeBody = "Print(\"Hello World!\")", Date = new DateTime(2018, 11, 7, 16, 49, 17, 101, DateTimeKind.Local), Language = 4, Notes = "This is cooler", Title = "Hello World python" },
                         new { ID = 3, AuthorID = 5, CodeBody = @"
 public class Node
 {
@@ -82,7 +82,7 @@ public class Node
     {
         Value = value;
     }
-}", Date = new DateTime(2018, 11, 7, 16, 44, 37, 290, DateTimeKind.Local), Language = 8, Notes = "Basic Node class with a value and .Next property.", Title = "Node" },
+}", Date = new DateTime(2018, 11, 7, 16, 49, 17, 101, DateTimeKind.Local), Language = 8, Notes = "Basic Node class with a value and .Next property.", Title = "Node" },
                         new { ID = 4, AuthorID = 4, CodeBody = @"
 public static int BinarySearchArray(int[] arr, int val)
 {
@@ -106,12 +106,12 @@ public static int BinarySearchArray(int[] arr, int val)
         }
     }
     return -1;
-}", Date = new DateTime(2018, 11, 7, 16, 44, 37, 290, DateTimeKind.Local), Language = 8, Notes = "Standard binary search on a sorted array.", Title = "Binary search" },
+}", Date = new DateTime(2018, 11, 7, 16, 49, 17, 101, DateTimeKind.Local), Language = 8, Notes = "Standard binary search on a sorted array.", Title = "Binary search" },
                         new { ID = 5, AuthorID = 3, CodeBody = @"
 const mapTwoToThe = (input) => 
 {
     return input.map(num => 2**num);
-}", Date = new DateTime(2018, 11, 7, 16, 44, 37, 290, DateTimeKind.Local), Language = 0, Notes = "Use array map method to take in an array and return a modified array. The returned array should containing the result of raising 2 to the power of the original input element.", Title = "Array.Prototype.Map()" },
+}", Date = new DateTime(2018, 11, 7, 16, 49, 17, 101, DateTimeKind.Local), Language = 0, Notes = "Use array map method to take in an array and return a modified array. The returned array should containing the result of raising 2 to the power of the original input element.", Title = "Array.Prototype.Map()" },
                         new { ID = 6, AuthorID = 1, CodeBody = @"
 def bubbleUp(arr):
     swapped = True
@@ -144,7 +144,7 @@ def bubbleDown(arr):
 
 
 x = [4,3,1,5,0,10,-4,3,9,0,-20]
-bubbleDown(x)", Date = new DateTime(2018, 11, 7, 16, 44, 37, 290, DateTimeKind.Local), Language = 4, Notes = "Really old bubble sort in python. Does it even work?", Title = "Bubblesort" },
+bubbleDown(x)", Date = new DateTime(2018, 11, 7, 16, 49, 17, 101, DateTimeKind.Local), Language = 4, Notes = "Really old bubble sort in python. Does it even work?", Title = "Bubblesort" },
                         new { ID = 7, AuthorID = 2, CodeBody = @"
 public int numUniqueEmails(String[] emails) 
 {
@@ -163,7 +163,7 @@ public int numUniqueEmails(String[] emails)
     }
 
     return seen.size();
-}", Date = new DateTime(2018, 11, 7, 16, 44, 37, 290, DateTimeKind.Local), Language = 2, Notes = "Email algorithm using java", Title = "Finding unique emails given email rules" },
+}", Date = new DateTime(2018, 11, 7, 16, 49, 17, 101, DateTimeKind.Local), Language = 2, Notes = "Email algorithm using java", Title = "Finding unique emails given email rules" },
                         new { ID = 8, AuthorID = 5, CodeBody = @"
 <form>
     First name:< br >
@@ -173,21 +173,22 @@ public int numUniqueEmails(String[] emails)
     < input type = ""text"" name = ""lastname"" value = ""Mouse"" >
     < br >< br >
     < input type = ""submit"" value = ""Submit"" >
-</ form > ", Date = new DateTime(2018, 11, 7, 16, 44, 37, 290, DateTimeKind.Local), Language = 9, Notes = "Simple HTML form from w3schools", Title = "Html form" },
-                        new { ID = 9, AuthorID = 1, CodeBody = @"const newPatient = (req, res) => {
-                                  let SQL = 'INSERT INTO patients (first_name, last_name) VALUES ($1,$2) ON CONFLICT DO NOTHING RETURNING id';
-                                  let values = [req.body.first_name, req.body.last_name];
-                                  client.query(SQL, values, (err, serverRes) => {
-                                    if(err){
-                                      console.log(values);
-                                      console.error(err);
-                                      res.render('pages/error', {message: err});
-                                    }else{
-                                      res.redirect(`/patient/${serverRes.rows[0].id}?added=true`);
-                                    }
-                                  });
-                                };", Date = new DateTime(2018, 11, 7, 16, 44, 37, 290, DateTimeKind.Local), Language = 0, Notes = "Using sql with javascript. sample call", Title = "Superagent" },
-                        new { ID = 10, AuthorID = 3, CodeBody = "SELECT * FROM myTable", Date = new DateTime(2018, 11, 7, 16, 44, 37, 290, DateTimeKind.Local), Language = 11, Notes = "Simple sql query. * means everything!", Title = "SQL" }
+</ form > ", Date = new DateTime(2018, 11, 7, 16, 49, 17, 101, DateTimeKind.Local), Language = 9, Notes = "Simple HTML form from w3schools", Title = "Html form" },
+                        new { ID = 9, AuthorID = 1, CodeBody = @"
+const newPatient = (req, res) => {
+    let SQL = 'INSERT INTO patients (first_name, last_name) VALUES ($1,$2) ON CONFLICT DO NOTHING RETURNING id';
+    let values = [req.body.first_name, req.body.last_name];
+    client.query(SQL, values, (err, serverRes) => {
+        if(err){
+            console.log(values);
+            console.error(err);
+            res.render('pages/error', {message: err});
+        }else{
+            res.redirect(`/patient/${serverRes.rows[0].id}?added=true`);
+        }
+    });
+};", Date = new DateTime(2018, 11, 7, 16, 49, 17, 101, DateTimeKind.Local), Language = 0, Notes = "Using sql with javascript. sample call", Title = "Superagent" },
+                        new { ID = 10, AuthorID = 3, CodeBody = "SELECT * FROM myTable", Date = new DateTime(2018, 11, 7, 16, 49, 17, 101, DateTimeKind.Local), Language = 11, Notes = "Simple sql query. * means everything!", Title = "SQL" }
                     );
                 });
 

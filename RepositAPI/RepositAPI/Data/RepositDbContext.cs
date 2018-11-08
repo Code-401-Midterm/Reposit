@@ -232,19 +232,20 @@ public int numUniqueEmails(String[] emails)
                     ID = 9,
                     Title = "Superagent",
                     Date = DateTime.Now,
-                    CodeBody = @"const newPatient = (req, res) => {
-                                  let SQL = 'INSERT INTO patients (first_name, last_name) VALUES ($1,$2) ON CONFLICT DO NOTHING RETURNING id';
-                                  let values = [req.body.first_name, req.body.last_name];
-                                  client.query(SQL, values, (err, serverRes) => {
-                                    if(err){
-                                      console.log(values);
-                                      console.error(err);
-                                      res.render('pages/error', {message: err});
-                                    }else{
-                                      res.redirect(`/patient/${serverRes.rows[0].id}?added=true`);
-                                    }
-                                  });
-                                };",
+                    CodeBody = @"
+const newPatient = (req, res) => {
+    let SQL = 'INSERT INTO patients (first_name, last_name) VALUES ($1,$2) ON CONFLICT DO NOTHING RETURNING id';
+    let values = [req.body.first_name, req.body.last_name];
+    client.query(SQL, values, (err, serverRes) => {
+        if(err){
+            console.log(values);
+            console.error(err);
+            res.render('pages/error', {message: err});
+        }else{
+            res.redirect(`/patient/${serverRes.rows[0].id}?added=true`);
+        }
+    });
+};",
                     Language = Language.JavaScript,
                     Notes = "Using sql with javascript. sample call",
                     AuthorID = 1
