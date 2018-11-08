@@ -32,7 +32,8 @@ namespace Reposit.Models.Services
 
         public async Task<List<FullSnippet>> GetAllSnippetsFromCategory(int? id)
         {
-            return await _context.FullSnippet.Where(snip => snip.CategoryID == id).ToListAsync();
+            var result = await _context.FullSnippet.Where(snip => snip.CategoryID == id).ToListAsync();
+            return result;
         }
 
         public async Task<List<Category>> GetCategories()

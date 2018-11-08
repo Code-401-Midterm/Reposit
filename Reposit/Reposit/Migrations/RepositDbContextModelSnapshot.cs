@@ -39,20 +39,23 @@ namespace Reposit.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Author");
+                    b.Property<string>("Author")
+                        .IsRequired();
 
                     b.Property<int>("CategoryID");
 
-                    b.Property<string>("CodeBody");
+                    b.Property<string>("CodeBody")
+                        .IsRequired();
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Language");
+                    b.Property<int>("Language");
 
                     b.Property<string>("Notes");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
