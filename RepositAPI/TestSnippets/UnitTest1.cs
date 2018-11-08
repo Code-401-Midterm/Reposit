@@ -28,11 +28,21 @@ namespace TestSnippets
             Assert.Equal("Hello", s.Title);
         }
 
-        //Test GetSetSnippetCodeBody
+        //Test GetSnippetCodeBody
         [Fact]
-        public void GetSetSnippetCodeBody()
+        public void GetSnippetCodeBody()
         {
             Snippet s = new Snippet();
+            s.CodeBody = "print('Hello World')";
+            Assert.Equal("print('Hello World')", s.CodeBody);
+        }
+
+        //Test SetSnippetCodeBody
+        [Fact]
+        public void SetSnippetCodeBody()
+        {
+            Snippet s = new Snippet();
+            s.CodeBody = "console.log('Hello world!')";
             s.CodeBody = "print('Hello World')";
             Assert.Equal("print('Hello World')", s.CodeBody);
         }
