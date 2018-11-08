@@ -60,17 +60,18 @@ namespace TestsReposit
             Assert.Equal("<h1>code</h1>", fullSnippet.CodeBody);
         }
 
-        ///// <summary>
-        ///// Test to get full snippet language
-        ///// </summary>
-        //[Fact]
-        //public void TestToGetFullSnippetLanguage()
-        //{
-        //    FullSnippet fullSnippet = new FullSnippet();
-        //    fullSnippet.Language = "C#";
+        /// <summary>
+        /// Test to get full snippet language
+        /// </summary>
+        [Fact]
+        public void TestToGetFullSnippetLanguage()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
+            fullSnippet.Language = (Language)Enum.Parse(typeof(Language), "JavaScript", true);
 
-        //    Assert.Equal("C#", fullSnippet.Language);
-        //}
+            var expected = (Language)Enum.Parse(typeof(Language), "JavaScript", true);
+            Assert.Equal(expected, fullSnippet.Language);
+        }
 
         /// <summary>
         /// Test to get full snippet notes
@@ -124,19 +125,19 @@ namespace TestsReposit
             Assert.Equal("<h1>code 2</h1>", fullSnippet.CodeBody);
         }
 
-        ///// <summary>
-        ///// Test to set full snippet language
-        ///// </summary>
-        //[Fact]
-        //public void TestToSetFullSnippetLanguage()
-        //{
-        //    FullSnippet fullSnippet = new FullSnippet();
-        //    fullSnippet.Language = "C#";
+        /// <summary>
+        /// Test to set full snippet language
+        /// </summary>
+        [Fact]
+        public void TestToSetFullSnippetLanguage()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
+            fullSnippet.Language = (Language)Enum.Parse(typeof(Language), "Csharp", true);
+            fullSnippet.Language = (Language)Enum.Parse(typeof(Language), "JavaScript", true);
 
-        //    fullSnippet.Language = "JavaScript";
-
-        //    Assert.Equal("JavaScript", fullSnippet.Language);
-        //}
+            var expected = (Language)Enum.Parse(typeof(Language), "JavaScript", true);
+            Assert.Equal(expected, fullSnippet.Language);
+        }
 
         /// <summary>
         /// Test to set full snippet notes
