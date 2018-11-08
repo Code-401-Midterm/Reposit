@@ -12,7 +12,7 @@
 <h4>Add snippets</h4>
 <p>
     <a asp-controller="FullSnippets" asp-action="Create" asp-route-id="@Model.ID">Create new snippet</a> |
-    <a asp-controller="FullSnippets" asp-action="Browse" asp-route-category ="@Model">Browse Snippet Library</a>
+    <a asp-controller="FullSnippets" asp-action="Browse" asp-route-id="@Model.ID">Browse Snippet Library</a>
 </p>
 <div>
     <h4>Snippets</h4>
@@ -47,34 +47,34 @@
     <tbody>
         @foreach (var item in Model.Snippets)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodeBody)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Language)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Title)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-controller="FullSnippets" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-controller="FullSnippets" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-controller="FullSnippets" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeBody)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Title)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="FullSnippets" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-controller="FullSnippets" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-controller="FullSnippets" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

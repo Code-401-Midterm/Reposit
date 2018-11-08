@@ -55,6 +55,11 @@ namespace Reposit.Models.Services
             return _context.Category.ToList();
         }
 
+        public async Task<Category> GetCategoryByID(int id)
+        {
+            return await _context.Category.FirstOrDefaultAsync(cat => cat.ID == id);
+        }
+
         public async Task<List<FullSnippet>> GetSnippetsFromAPI()
         {
             using (var client = new HttpClient())
