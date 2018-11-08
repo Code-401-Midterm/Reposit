@@ -4,6 +4,7 @@ using Reposit.Models;
 using System;
 using Xunit;
 using Reposit;
+using System.Collections.Generic;
 
 namespace TestsReposit
 {
@@ -328,6 +329,58 @@ namespace TestsReposit
 
                 Assert.DoesNotContain(category, categoryTitle);
             }
+        }
+
+        [Fact]
+        public void GetViewModelAllSnippetList()
+        {
+            ViewModel viewModel = new ViewModel();
+            List<FullSnippet> list = new List<FullSnippet>();
+            FullSnippet fs1 = new FullSnippet();
+            FullSnippet fs2 = new FullSnippet();
+            fs1.Title = "Nested Loops";
+            fs2.Title = "Array Search";
+            list.Add(fs1);
+            list.Add(fs2);
+            viewModel.AllSnippets = list;
+
+            Assert.Contains(fs1, viewModel.AllSnippets);
+        }
+
+        [Fact]
+        public void SetViewModelAllSnippetList()
+        {
+            ViewModel viewModel = new ViewModel();
+            List<FullSnippet> list = new List<FullSnippet>();
+            FullSnippet fs1 = new FullSnippet();
+            FullSnippet fs2 = new FullSnippet();
+            fs1.Title = "Nested Loops";
+            fs2.Title = "Array Search";
+            list.Add(fs1);
+            list.Add(fs2);
+            viewModel.AllSnippets = list;
+
+            viewModel.AllSnippets.Remove(fs2);
+            Assert.DoesNotContain(fs2, list);
+        }
+
+        [Fact]
+        public void GetViewModelCategoryID()
+        {
+            ViewModel viewModel = new ViewModel();
+            viewModel.CategoryID = 23;
+
+            Assert.Equal(23, viewModel.CategoryID);
+        }
+
+        [Fact]
+        public void SetViewModelCategoryID()
+        {
+            ViewModel viewModel = new ViewModel();
+            viewModel.CategoryID = 23;
+
+            viewModel.CategoryID = 99;
+            Assert.Equal(99, viewModel.CategoryID);
         }
     }
 }
