@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Reposit.Migrations
 {
-    public partial class update : Migration
+    public partial class dbEdits2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -8,8 +8,7 @@ namespace Reposit.Models
     public class ViewModel
     {
         public List<FullSnippet> AllSnippets { get; set; }
-        
         public int CategoryID { get; set; }
-
+        public string CategoryTitle { get; set; }
     }
 }
