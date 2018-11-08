@@ -6,7 +6,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Categories</h2>
 <p>
     <a asp-controller="Categories" asp-action="Create">Create new category</a>
 </p>
@@ -29,7 +28,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Change name</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete catgory</a>
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }
