@@ -8,13 +8,13 @@
 
 <h2>Snippets</h2>
 <p>
-    <a asp-action="Details" asp-controller="Categories" asp-route-id="@Model.Category.ID">Back to category</a> |
+    <a asp-action="Details" asp-controller="Categories" asp-route-id="@Model.CategoryID">Back to category</a> |
 </p>
 <div class="container-fluid">
     <form method="post">
         <label>Search by Title:</label>
         <input type="text" placeholder="Enter search term here" name="searchTerm" />
-        <input type="hidden" name="id" value="@Model.Category.ID"/>
+        <input type="hidden" name="id" value="@Model.CategoryID"/>
         <button type="submit">Search</button>
     </form>
 
@@ -89,7 +89,7 @@
                             </dl>
                         </div>
                         <div class="modal-footer">
-                            @await Html.PartialAsync("_AddToCategory", thing, new ViewDataDictionary(ViewData) { { "CategoryID", Model.Category.ID } })
+                            @await Html.PartialAsync("_AddToCategory", thing, new ViewDataDictionary(ViewData) { { "CategoryID", Model.CategoryID } })
                             @*<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>*@
                         </div>
                     </div>

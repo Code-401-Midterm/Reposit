@@ -4,6 +4,7 @@ using Reposit.Models;
 using System;
 using Xunit;
 using Reposit;
+using System.Collections.Generic;
 
 namespace TestsReposit
 {
@@ -59,17 +60,18 @@ namespace TestsReposit
             Assert.Equal("<h1>code</h1>", fullSnippet.CodeBody);
         }
 
-        ///// <summary>
-        ///// Test to get full snippet language
-        ///// </summary>
-        //[Fact]
-        //public void TestToGetFullSnippetLanguage()
-        //{
-        //    FullSnippet fullSnippet = new FullSnippet();
-        //    fullSnippet.Language = "C#";
+        /// <summary>
+        /// Test to get full snippet language
+        /// </summary>
+        [Fact]
+        public void TestToGetFullSnippetLanguage()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
+            fullSnippet.Language = (Language)Enum.Parse(typeof(Language), "JavaScript", true);
 
-        //    Assert.Equal("C#", fullSnippet.Language);
-        //}
+            var expected = (Language)Enum.Parse(typeof(Language), "JavaScript", true);
+            Assert.Equal(expected, fullSnippet.Language);
+        }
 
         /// <summary>
         /// Test to get full snippet notes
@@ -123,19 +125,19 @@ namespace TestsReposit
             Assert.Equal("<h1>code 2</h1>", fullSnippet.CodeBody);
         }
 
-        ///// <summary>
-        ///// Test to set full snippet language
-        ///// </summary>
-        //[Fact]
-        //public void TestToSetFullSnippetLanguage()
-        //{
-        //    FullSnippet fullSnippet = new FullSnippet();
-        //    fullSnippet.Language = "C#";
+        /// <summary>
+        /// Test to set full snippet language
+        /// </summary>
+        [Fact]
+        public void TestToSetFullSnippetLanguage()
+        {
+            FullSnippet fullSnippet = new FullSnippet();
+            fullSnippet.Language = (Language)Enum.Parse(typeof(Language), "Csharp", true);
+            fullSnippet.Language = (Language)Enum.Parse(typeof(Language), "JavaScript", true);
 
-        //    fullSnippet.Language = "JavaScript";
-
-        //    Assert.Equal("JavaScript", fullSnippet.Language);
-        //}
+            var expected = (Language)Enum.Parse(typeof(Language), "JavaScript", true);
+            Assert.Equal(expected, fullSnippet.Language);
+        }
 
         /// <summary>
         /// Test to set full snippet notes
@@ -328,6 +330,70 @@ namespace TestsReposit
 
                 Assert.DoesNotContain(category, categoryTitle);
             }
+        }
+
+        /// <summary>
+        /// Test to get ViewModel AllSnippet list property
+        /// </summary>
+        [Fact]
+        public void GetViewModelAllSnippetList()
+        {
+            ViewModel viewModel = new ViewModel();
+            List<FullSnippet> list = new List<FullSnippet>();
+            FullSnippet fs1 = new FullSnippet();
+            FullSnippet fs2 = new FullSnippet();
+            fs1.Title = "Nested Loops";
+            fs2.Title = "Array Search";
+            list.Add(fs1);
+            list.Add(fs2);
+            viewModel.AllSnippets = list;
+
+            Assert.Contains(fs1, viewModel.AllSnippets);
+        }
+
+        /// <summary>
+        /// Test to set ViewModel AllSnippet list property
+        /// </summary>
+        [Fact]
+        public void SetViewModelAllSnippetList()
+        {
+            ViewModel viewModel = new ViewModel();
+            List<FullSnippet> list = new List<FullSnippet>();
+            FullSnippet fs1 = new FullSnippet();
+            FullSnippet fs2 = new FullSnippet();
+            fs1.Title = "Nested Loops";
+            fs2.Title = "Array Search";
+            list.Add(fs1);
+            list.Add(fs2);
+            viewModel.AllSnippets = list;
+
+            viewModel.AllSnippets.Remove(fs2);
+            Assert.DoesNotContain(fs2, list);
+        }
+
+        /// <summary>
+        /// Test to get ViewModel category ID
+        /// </summary>
+        [Fact]
+        public void GetViewModelCategoryID()
+        {
+            ViewModel viewModel = new ViewModel();
+            viewModel.CategoryID = 23;
+
+            Assert.Equal(23, viewModel.CategoryID);
+        }
+
+        /// <summary>
+        /// Test to set ViewModel category ID
+        /// </summary>
+        [Fact]
+        public void SetViewModelCategoryID()
+        {
+            ViewModel viewModel = new ViewModel();
+            viewModel.CategoryID = 23;
+
+            viewModel.CategoryID = 99;
+            Assert.Equal(99, viewModel.CategoryID);
         }
     }
 }
