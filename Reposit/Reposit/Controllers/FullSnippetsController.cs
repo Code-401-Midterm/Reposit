@@ -29,7 +29,7 @@ namespace Reposit.Controllers
         //This method will be extensively reworked to shows all API snippets and
         //all app DB snippets (whose CategoryID != categoryID, with unique titles)
         //It will send a ViewModel object to the FullSnippets Index view
-        public async Task<IActionResult> Browse(Category category)
+        public async Task<IActionResult> Browse(int id)
         {
             List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
             List<FullSnippet> webDb = await _context.GetSnippets();
@@ -38,9 +38,9 @@ namespace Reposit.Controllers
             ViewModel output = new ViewModel();
 
             //all snippets from web and from API
-            allSnippets = allSnippets.Where(x => x.CategoryID != category.ID).ToList();
+            allSnippets = allSnippets.Where(x => x.CategoryID != id).ToList();
 
-            var categorySnips = webDb.Where(x => x.CategoryID == category.ID).ToList();
+            var categorySnips = webDb.Where(x => x.CategoryID == id).ToList();
 
 
             var uniqueSnips = new List<FullSnippet>();
@@ -63,10 +63,11 @@ namespace Reposit.Controllers
                   .ToList();
 
             output.AllSnippets = uniqueSnippets;
-            output.Category = category;
+            output.CategoryID = id;
+            Category category = await _context.GetCategoryByID(id);
+            output.CategoryTitle = category.Title;
 
 
-            
             return View(output);
         }
 
@@ -76,7 +77,7 @@ namespace Reposit.Controllers
         /// </summary>
         /// <param name="searchTerm">Search Term</param>
         /// <returns></returns>
-        public async Task<IActionResult> Browse(Category category, string searchTerm)
+        public async Task<IActionResult> Browse(int id, string searchTerm)
         {
 
             List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
@@ -87,8 +88,8 @@ namespace Reposit.Controllers
             ViewModel output = new ViewModel();
 
             //all snippets from web and from API
-            allSnippets = allSnippets.Where(x => x.CategoryID != category.ID).ToList();
-            var categorySnips = webDb.Where(x => x.CategoryID == category.ID).ToList();
+            allSnippets = allSnippets.Where(x => x.CategoryID != id).ToList();
+            var categorySnips = webDb.Where(x => x.CategoryID == id).ToList();
 
             var uniqueSnips = new List<FullSnippet>();
 
@@ -112,7 +113,10 @@ namespace Reposit.Controllers
             var searchResult = uniqueSnippets.Where(x => x.Title.ToLower().Contains(searchTerm.ToLower())).ToList();
 
             output.AllSnippets = searchResult;
-            output.Category = category;
+            output.CategoryID = id;
+            Category category = await _context.GetCategoryByID(id);
+            output.CategoryTitle = category.Title;
+
 
             return View(output);
         }
@@ -149,7 +153,7 @@ namespace Reposit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
+        public async Task<IActionResult> Create([Bind("Title,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
         {
             if (ModelState.IsValid)
             {
@@ -162,7 +166,7 @@ namespace Reposit.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddToCategory([Bind("Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
+        public async Task<ActionResult> AddToCategory([Bind("Title,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
         {
             if (ModelState.IsValid)
             {
@@ -195,7 +199,7 @@ namespace Reposit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet, int categoryID)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet, int categoryID)
         {
             if (id != fullSnippet.ID)
             {

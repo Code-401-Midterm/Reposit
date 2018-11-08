@@ -2,7 +2,7 @@
 
 namespace Reposit.Migrations
 {
-    public partial class aksdaj : Migration
+    public partial class resetup2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
