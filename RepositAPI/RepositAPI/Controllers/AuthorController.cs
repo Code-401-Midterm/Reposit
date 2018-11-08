@@ -46,7 +46,7 @@ namespace RepositAPI.Controllers
                                      Title = s.Title,
                                      DateCreated = s.Date,
                                      CodeBody = s.CodeBody,
-                                     Language = s.Language,
+                                     Language = s.Language.ToString(),
                                      Notes = s.Notes,
                                      Author = s.Author.Name,
                                      AuthorID = s.AuthorID
