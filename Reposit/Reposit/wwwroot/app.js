@@ -15,6 +15,10 @@
         }
     });
 
+    //$('.add-category-card').on('click', () => {
+
+    //});
+
     // Scroll to top button appear
     $(document).scroll(function () {
         var scrollDistance = $(this).scrollTop();
