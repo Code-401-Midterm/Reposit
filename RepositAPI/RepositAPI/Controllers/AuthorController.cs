@@ -15,6 +15,11 @@ namespace RepositAPI.Controllers
     public class AuthorController : ControllerBase
     {
         private RepositDbContext _context;
+
+        /// <summary>
+        /// Constructor 
+        /// </summary>
+        /// <param name="context"> DB context</param>
         public AuthorController(RepositDbContext context)
         {
             _context = context;
@@ -38,6 +43,7 @@ namespace RepositAPI.Controllers
         [HttpGet("{id}", Name = "GetAuthorByID")]
         public async Task<IActionResult> Get([FromRoute]int id)
         {
+            //Get all snippets for author and create snippetDTO for each
             var snippets =  _context.Snippets
                                  .Where(s => s.AuthorID == id)
                                  .Select(s => new SnippetDTO

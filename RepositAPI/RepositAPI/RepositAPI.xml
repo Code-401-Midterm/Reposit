@@ -4,6 +4,12 @@
         <name>RepositAPI</name>
     </assembly>
     <members>
+        <member name="M:RepositAPI.Controllers.AuthorController.#ctor(RepositAPI.Data.RepositDbContext)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="context"> DB context</param>
+        </member>
         <member name="M:RepositAPI.Controllers.AuthorController.Get">
             <summary>
             Returns all Authors with their details
@@ -24,6 +30,32 @@
             <param name="author">Required. Do not include an explicit
             id in the body. Name field is required.</param>
             <returns>201 Created status and new Author's details</returns>
+        </member>
+        <member name="M:RepositAPI.Controllers.SnippetController.#ctor(RepositAPI.Data.RepositDbContext)">
+            <summary>
+            Contructor
+            </summary>
+            <param name="context">DB context</param>
+        </member>
+        <member name="M:RepositAPI.Controllers.SnippetController.Get">
+            <summary>
+            Get all Snippets
+            </summary>
+            <returns>A list of all Snippets</returns>
+        </member>
+        <member name="M:RepositAPI.Controllers.SnippetController.Get(System.Int32)">
+            <summary>
+            Gets and returns a Snippet by ID
+            </summary>
+            <param name="id">Snippet's ID</param>
+            <returns>The requested Snippet</returns>
+        </member>
+        <member name="M:RepositAPI.Controllers.SnippetController.Post(RepositAPI.Models.Snippet)">
+            <summary>
+            Create a Snippet
+            </summary>
+            <param name="snippet">The snippet to create in the DB</param>
+            <returns>201 status and new snippet's details</returns>
         </member>
     </members>
 </doc>
