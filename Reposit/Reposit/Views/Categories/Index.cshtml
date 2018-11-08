@@ -1,15 +1,9 @@
 ﻿@model IEnumerable<Reposit.Models.Category>
-
 @{
     ViewData["Title"] = "Categories";
     ViewData["Description"] = "Browse all categories";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<p>
-    <a asp-controller="Categories" asp-action="Create">Create new category</a>
-</p>
-
 <table class="table">
     <thead>
         <tr>
@@ -20,17 +14,21 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Title)</a>
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Change name</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Change name</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<a class="btn btn-primary" href ="categories/create"type ="button">Create New Category</a>
+
