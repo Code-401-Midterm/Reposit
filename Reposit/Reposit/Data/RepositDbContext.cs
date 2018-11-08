@@ -16,6 +16,7 @@ namespace Reposit.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
         }
 
         public DbSet<Category> Category { get; set; }
