@@ -76,16 +76,16 @@ namespace RepositAPI.Data
                     Title = "Node",
                     Date = DateTime.Now,
                     CodeBody = @"public class Node
-                                {
-                                    public object Value { get; set; }
-                                    public Node Right { get; set; }
-                                    public Node Left { get; set; }
+{
+    public object Value { get; set; }
+    public Node Right { get; set; }
+    public Node Left { get; set; }
 
-                                    public Node(object value)
-                                    {
-                                        Value = value;
-                                    }
-                                }",
+    public Node(object value)
+    {
+        Value = value;
+    }
+}",
                     Language = Language.Csharp,
                     Notes = "Basic Node class with a value and .Next property.",
                     AuthorID = 5

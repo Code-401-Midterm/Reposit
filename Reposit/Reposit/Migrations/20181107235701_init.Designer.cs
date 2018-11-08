@@ -10,8 +10,8 @@ using Reposit.Data;
 namespace Reposit.Migrations
 {
     [DbContext(typeof(RepositDbContext))]
-    [Migration("20181106211241_apiChangedModelProps")]
-    partial class apiChangedModelProps
+    [Migration("20181107235701_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
