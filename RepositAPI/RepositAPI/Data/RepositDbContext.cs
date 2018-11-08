@@ -188,7 +188,7 @@ public int numUniqueEmails(String[] emails)
         {
             local = local.substring(0, local.indexOf('+'));
         }
-        local = local.replaceAll(""."", "");
+        local = local.replaceAll(""."", """");
         seen.add(local + rest);
     }
 
