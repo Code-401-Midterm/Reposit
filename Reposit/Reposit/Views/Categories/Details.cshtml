@@ -1,49 +1,84 @@
-﻿@model Reposit.Models.Category
-
-@*Will need to grab Model.Snippets as an IEnumerable*@ 
+@model Reposit.Models.Category
+@*Will need to grab Model.Snippets as an IEnumerable*@
 
 @{
-    ViewData["Title"] = "Details";
+    string quoteName = $"\"{@Model.Title}\"";
+    ViewData["Title"] = @Model.Title;
+    ViewData["Description"] = $"All snippets belonging to the {quoteName} category";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@Html.DisplayFor(model => model.Title)</h2>
-
-
-
+<hr />
+<h4>Add snippets</h4>
 <p>
-    <a asp-controller="FullSnippets" asp-action="Create">Create New</a>
-    <a asp-action="Index" asp-controller="FullSnippets">Browse Snippet Library</a>
-    <a asp-controller="Categories" asp-action="Index">Back to List</a>
+    <a asp-controller="FullSnippets" asp-action="Create" asp-route-id="@Model.ID">Create new snippet</a> |
+    <a asp-controller="FullSnippets" asp-action="Browse" asp-route-id="@Model.ID">Browse Snippet Library</a>
 </p>
 <div>
     <h4>Snippets</h4>
 </div>
-
-<div class="container-fluid">
-    <div class="row">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Code
+            </th>
+            <th>
+                Language
+            </th>
+            <th>
+                Notes
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Category
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach (var item in Model.Snippets)
         {
-            <div class="col-md-3 preview-cards ml-5 mb-5">
-                <h4>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </h4>
-                <h6>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </h6>
-                <span class="badge badge-primary mb-4" id="@Html.DisplayFor(modelItem => item.Language)">@Html.DisplayFor(modelItem => item.Language)</span>
-                <p>
-                    @Html.DisplayFor(modelItem => item.Notes)
-                </p>
-                <p>
-                    <a asp-action="Edit" asp-controller="FullSnippets" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-controller="FullSnippets" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-controller="FullSnippets" asp-route-id="@item.ID">Delete</a>
-                </p>
-            </div>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeBody)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Title)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-controller="FullSnippets" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-controller="FullSnippets" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-controller="FullSnippets" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
         }
-    </div>
-</div>
+    </tbody>
+</table>
 <div>
-    
+    <a asp-action="Index">Back to List</a>
 </div>

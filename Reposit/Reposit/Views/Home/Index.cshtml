@@ -1,31 +1,28 @@
 ﻿@model IEnumerable<Reposit.Models.Category>
 
 @{
+    ViewData["Title"] = "Reposit";
+    ViewData["Description"] = "Create. Save. Categorize. Profit.";
     Layout = "_Layout";
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
+<h1 class="text-center text-uppercase">Categories</h1>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        @foreach (var thing in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
+            <div class="col-md-3 preview-cards ml-5 mb-5">
+                <h4>
+                    @Html.DisplayFor(modelItem => thing.Title)
+                </h4>
+                <p>
+                    <a asp-controller="Categories" asp-action="Details" asp-route-id="@thing.ID">View Snippets »</a>
+                </p>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
+</div>
+

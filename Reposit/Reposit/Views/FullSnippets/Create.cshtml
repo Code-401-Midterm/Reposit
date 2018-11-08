@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Language" class="control-label"></label>
-                <select asp-for="Language" @*asp-items="@Html.GetEnumSelectList(typeof(Reposit.Models.Language))"*@ class="form-control" />
+                <select asp-for="Language" asp-items="@Html.GetEnumSelectList(typeof(Reposit.Models.Language))" class="form-control" />
                 <span asp-validation-for="Language" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,8 +48,9 @@
                 <span asp-validation-for="Author" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CategoryID" class="control-label"></label>
-                <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.CategoryID"></select>
+                @*<label asp-for="CategoryID" class="control-label">Category</label>*@
+                @*<select asp-for="CategoryID" class="form-control" asp-items="ViewBag.CategoryID"></select>*@
+                <input type="hidden" asp-for="CategoryID" value="@ViewBag.CategoryID"/>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

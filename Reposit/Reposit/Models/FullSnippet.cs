@@ -16,7 +16,7 @@ namespace Reposit.Models
         [Required(ErrorMessage = "This field is required")]
         public string CodeBody { get; set; }
         [Required(ErrorMessage = "This field is required")]
-        public string Language { get; set; }
+        public Language Language { get; set; }
         public string Notes { get; set; }
         [Required(ErrorMessage = "This field is required")]
         public string Author { get; set; }
@@ -25,31 +25,31 @@ namespace Reposit.Models
         public Category Category { get; set; }
     }
 
-    //public enum Language
-    //{
-    //    [Display(Name = "Javascript")]
-    //    JavaScript,
-    //    [Display(Name = "Swift")]
-    //    Swift,
-    //    [Display(Name = "Java")]
-    //    Java,
-    //    [Display(Name = "C++")]
-    //    Cpp,
-    //    [Display(Name = "Python")]
-    //    Python,
-    //    [Display(Name = "PHP")]
-    //    PHP,
-    //    [Display(Name = "Scalia")]
-    //    Scala,
-    //    [Display(Name = "Ruby")]
-    //    Ruby,
-    //    [Display(Name = "C#")]
-    //    Csharp,
-    //    [Display(Name = "HTML")]
-    //    HTML,
-    //    [Display(Name = "CSS")]
-    //    CSS,
-    //    [Display(Name = "Other")]
-    //    Other
-    //}
+    public enum Language
+    {
+        [Display(Name = "Javascript")]
+        JavaScript,
+        [Display(Name = "Swift")]
+        Swift,
+        [Display(Name = "Java")]
+        Java,
+        [Display(Name = "C++")]
+        Cpp,
+        [Display(Name = "Python")]
+        Python,
+        [Display(Name = "PHP")]
+        PHP,
+        [Display(Name = "Scalia")]
+        Scala,
+        [Display(Name = "Ruby")]
+        Ruby,
+        [Display(Name = "C#")]
+        Csharp,
+        [Display(Name = "HTML")]
+        HTML,
+        [Display(Name = "CSS")]
+        CSS,
+        [Display(Name = "Other")]
+        Other
+    }
 }

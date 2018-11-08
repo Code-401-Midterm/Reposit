@@ -10,19 +10,18 @@
 7. [Database Schemas](#database-schema)
 
 ## Vision
-This product will provide a virtual repository that allows users to categorize 
-and catalogue code snippets that they find helpful. 
+This product will provide a virtual repository that allows users to create 
+and categorize snippets that they find helpful. 
 This helps users to keep track of important and helpful solutions to problems they may encounter frequently. 
 For example, a user may want to remember how they effectively processed an array of integers and removed all multiples of 5. 
 
 ## Scope
 * IN:
   - The web app will allow users to save snippets of code.
-  - The web app will allow users to categorize their saved snippets by code language.
-  - We will allow users to associate snippets with tags like “binary tree” or “search.”
-  - We will allow users to search for saved code snippets by tag or category.
+  - The web app will allow users to save snippets by code language.
+  - We will allow users to associate snippets with category "sets" such as "Final Exam" or "Data Structures."
   - Each snippet will require a user to add the snippet’s source upon creation.
-  - We will allow users to create a “study deck” from a filtered list of snippets where each card in the deck shows the full details associated with a given snippet.
+  - We will allow users to add new snippets to a Category set via browsing all of their snippets and all snippets retrieved from the RepositAPI.
 
 * OUT:
   - We will not allow users to save any other type of data besides text.
@@ -31,17 +30,18 @@ For example, a user may want to remember how they effectively processed an array
   - We will not require users to create accounts with logins.
   
 ### MVP
-A user can create, edit, and delete a snippet and will have the ability to create and delete category tags. There will also be a page where a user can see a list of all their snippets and filter that list by language, category, etc. Either prior to or after filtering, a user can click on a button to review a set of snippets as flash cards.
+A user can create, edit, and delete a category and will have the ability to add snippets to the category by either creating a new snippet or adding a snippet from the RepositAPI.
 
 ### Stretch
   - The website will create a new endpoint for unique users so that individual snippet repositories are accessible by a unique URL.
   - The user will see a list of suggested “study decks” on their homepage for quick access to particular decks.
   - The website will be mobile-friendly (responsive)
+  
 
 ## Requirements
 ### Functional Requirements
- - The user can add and delete code snippets.
- - The user can search for code snippets by category or tag.
+ - The user can add, edit, and delete code snippets.
+ - The user can add, edit, and delete category sets for snippets.
  - The web app will display code snippets and details. 
  - The web app will have create, update, and delete views.
 ### Non-Functional Requirements
@@ -69,7 +69,7 @@ A user can create, edit, and delete a snippet and will have the ability to creat
     - Navigation menu present on all views
   - Acceptance
     - Hallway testing
-* VIEW: As a user, I want to view code snippets and details on a page so I can review all the useful code snippets available on the app.
+* VIEW: As a user, I want to view code snippets and details on a page so I can review all the useful code snippets in a specific Category.
   - Features
     - Code snippet and details displayed on page
     - Organized and ease of reading
@@ -84,7 +84,7 @@ A user can create, edit, and delete a snippet and will have the ability to creat
     - All details are saved
     - Data can be retrieved
 ### API  
-* CREATE: As a developer, I want to allow users to create code snippets to add to the database.
+* CREATE: As a developer, I want to allow users to create code snippets to add to the web app's database.
   - Features
     - User will enter title, category, code snippet, and source of snippet.
     - Created snippets will save to database.

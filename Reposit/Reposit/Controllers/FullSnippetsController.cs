@@ -26,6 +26,22 @@ namespace Reposit.Controllers
             return View(await _context.GetSnippets());
         }
 
+        //This method will be extensively reworked to shows all API snippets and
+        //all app DB snippets (whose CategoryID != categoryID, with unique titles)
+        //It will send a ViewModel object to the FullSnippets Index view
+        public async Task<IActionResult> Browse(int id)
+        {
+            List<FullSnippet> apiResults = await _context.GetSnippetsFromAPI();
+            List<FullSnippet> webDb = await _context.GetSnippets();
+            var allSnippets = apiResults.Concat(webDb).ToList();
+            ViewModel output = new ViewModel();
+
+            output.AllSnippets = allSnippets;
+            output.CategoryID = id;
+            
+            return View(output);
+        }
+
         // GET: FullSnippets/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -45,9 +61,11 @@ namespace Reposit.Controllers
         }
 
         // GET: FullSnippets/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewData["CategoryID"] = new SelectList(_context.GetAllCategories(), "ID", "Title");
+            int categoryID = id;
+            //ViewData["CategoryID"] = new SelectList(_context.GetAllCategories(), "ID", "Title");
+            ViewData["CategoryID"] = categoryID;
             return View();
         }
 
@@ -56,13 +74,25 @@ namespace Reposit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
+        public async Task<IActionResult> Create([Bind("Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
         {
             if (ModelState.IsValid)
             {
                 await _context.AddSnippet(fullSnippet);
                 //return RedirectToAction(nameof(Index));
                 return RedirectToAction("Details", "FullSnippets", new { id = fullSnippet.ID });
+            }
+            return View(fullSnippet);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddToCategory([Bind("Title,Date,CodeBody,Language,Notes,Author,CategoryID")] FullSnippet fullSnippet)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.AddSnippet(fullSnippet);
+                return new EmptyResult();
             }
             return View(fullSnippet);
         }
