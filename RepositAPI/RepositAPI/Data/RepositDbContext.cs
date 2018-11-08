@@ -75,7 +75,8 @@ namespace RepositAPI.Data
                     ID = 3,
                     Title = "Node",
                     Date = DateTime.Now,
-                    CodeBody = @"public class Node
+                    CodeBody = @"
+public class Node
 {
     public object Value { get; set; }
     public Node Right { get; set; }
