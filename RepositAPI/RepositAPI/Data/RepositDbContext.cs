@@ -96,29 +96,30 @@ public class Node
                     ID = 4,
                     Title = "Binary search",
                     Date = DateTime.Now,
-                    CodeBody = @"public static int BinarySearchArray(int[] arr, int val)
-                                {
-                                    int start = 0;
-                                    int end = arr.Length - 1;
-                                    int mid;
-                                    while (start <= end)
-                                    {
-                                        mid = (start + end) / 2;
-                                        if (arr[mid] == val)
-                                        {
-                                            return mid;
-                                        }
-                                        else if (arr[mid] < val)
-                                        {
-                                            start = mid + 1;
-                                        }
-                                        else if (arr[mid] > val)
-                                        {
-                                            end = mid - 1;
-                                        }
-                                    }
-                                    return -1;
-                                }",
+                    CodeBody = @"
+public static int BinarySearchArray(int[] arr, int val)
+{
+    int start = 0;
+    int end = arr.Length - 1;
+    int mid;
+    while (start <= end)
+    {
+        mid = (start + end) / 2;
+        if (arr[mid] == val)
+        {
+            return mid;
+        }
+        else if (arr[mid] < val)
+        {
+            start = mid + 1;
+        }
+        else if (arr[mid] > val)
+        {
+            end = mid - 1;
+        }
+    }
+    return -1;
+}",
                     Language = Language.Csharp,
                     Notes = "Standard binary search on a sorted array.",
                     AuthorID = 4
@@ -128,10 +129,11 @@ public class Node
                     ID = 5,
                     Title = "Array.Prototype.Map()",
                     Date = DateTime.Now,
-                    CodeBody = @"const mapTwoToThe = (input) => 
-                               {
-                                   return input.map(num => 2**num);
-                               }",
+                    CodeBody = @"
+const mapTwoToThe = (input) => 
+{
+    return input.map(num => 2**num);
+}",
                     Language = Language.JavaScript,
                     Notes = "Use array map method to take in an array and return a modified array. The returned array should containing the result of raising 2 to the power of the original input element.",
                     AuthorID = 3
@@ -141,38 +143,39 @@ public class Node
                     ID = 6,
                     Title = "Bubblesort",
                     Date = DateTime.Now,
-                    CodeBody = @"def bubbleUp(arr):
-                                    swapped = True
-                                    while swapped == True:
-                                        swapped = False
-                                        i = 0
-                                        for i in range(len(arr) - 1):
-                                            if arr[i] > arr[i+1]:
-                                                arr[i],arr[i+1] = arr[i+1],arr[i]
-                                                swapped = True
-                                    print arr
+                    CodeBody = @"
+def bubbleUp(arr):
+    swapped = True
+    while swapped == True:
+        swapped = False
+        i = 0
+        for i in range(len(arr) - 1):
+            if arr[i] > arr[i+1]:
+                arr[i],arr[i+1] = arr[i+1],arr[i]
+                swapped = True
+    print arr
 
 
-                                y = [4,3,1,5,-10,0]
-                                bubbleUp(y)
+y = [4,3,1,5,-10,0]
+bubbleUp(y)
 
-                                def bubbleDown(arr):
-                                    swapped = True
-                                    while swapped == True:
-                                        swapped = False
-                                        i = len(arr) - 1
-                                        while i > 0:
-                                            if arr[i] < arr[i-1]:
-                                                arr[i],arr[i-1] = arr[i-1],arr[i]
-                                                swapped = True
+def bubbleDown(arr):
+    swapped = True
+    while swapped == True:
+        swapped = False
+        i = len(arr) - 1
+        while i > 0:
+            if arr[i] < arr[i-1]:
+                arr[i],arr[i-1] = arr[i-1],arr[i]
+                swapped = True
 
-                                            i -= 1
+            i -= 1
 
-                                    print arr
+    print arr
 
 
-                                x = [4,3,1,5,0,10,-4,3,9,0,-20]
-                                bubbleDown(x)",
+x = [4,3,1,5,0,10,-4,3,9,0,-20]
+bubbleDown(x)",
                     Language = Language.Python,
                     Notes = "Really old bubble sort in python. Does it even work?",
                     AuthorID = 1
@@ -182,22 +185,25 @@ public class Node
                     ID = 7,
                     Title = "Finding unique emails given email rules",
                     Date = DateTime.Now,
-                    CodeBody = @"public int numUniqueEmails(String[] emails) {
-                                   Set<String> seen = new HashSet();
-                                   for (String email: emails) {
-                                       int i = email.indexOf('@');
-                                       String local = email.substring(0, i);
-                                       String rest = email.substring(i);
-                                       if (local.contains(""+"")) {
-                                           local = local.substring(0, local.indexOf('+'));
-                                    }
-                                    local = local.replaceAll(""."", "");
-                                       seen.add(local + rest);
-                                   }
+                    CodeBody = @"
+public int numUniqueEmails(String[] emails) 
+{
+    Set<String> seen = new HashSet();
+    for (String email: emails)
+    {
+        int i = email.indexOf('@');
+        String local = email.substring(0, i);
+        String rest = email.substring(i);
+        if (local.contains(""+""))
+        {
+            local = local.substring(0, local.indexOf('+'));
+        }
+        local = local.replaceAll(""."", "");
+        seen.add(local + rest);
+    }
 
-                                   return seen.size();
-                               }
-                            }",
+    return seen.size();
+}",
                     Language = Language.Java,
                     Notes = "Email algorithm using java",
                     AuthorID = 2
@@ -207,15 +213,16 @@ public class Node
                     ID = 8,
                     Title = "Html form",
                     Date = DateTime.Now,
-                    CodeBody = @"<form>
-                                  First name:< br >
-                                  < input type = ""text"" name = ""firstname"" value = ""Mickey"" >
-                                  < br >
-                                  Last name:< br >
-                                  < input type = ""text"" name = ""lastname"" value = ""Mouse"" >
-                                  < br >< br >
-                                  < input type = ""submit"" value = ""Submit"" >
-                                </ form > ",
+                    CodeBody = @"
+<form>
+    First name:< br >
+    < input type = ""text"" name = ""firstname"" value = ""Mickey"" >
+    < br >
+    Last name:< br >
+    < input type = ""text"" name = ""lastname"" value = ""Mouse"" >
+    < br >< br >
+    < input type = ""submit"" value = ""Submit"" >
+</ form > ",
                     Language = Language.HTML,
                     Notes = "Simple HTML form from w3schools",
                     AuthorID = 5,
