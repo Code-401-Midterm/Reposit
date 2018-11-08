@@ -25,6 +25,8 @@
             @Html.DisplayFor(model => model.CodeBody)
                 </code>
             </pre>
+            <input type="text" id="snip" value="@Html.DisplayFor(model => model.CodeBody)" />
+            <button id="copyButton">Copy Snippet!</button>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Language)

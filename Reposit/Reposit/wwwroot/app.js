@@ -1,6 +1,24 @@
 ﻿(function ($) {
     "use strict"; // Start of use strict
 
+    //Event listener for copy
+    $("#copyButton").on("click", function () {
+        copyToClipboard();
+    });
+
+    //Copy to clipboard
+    function copyToClipboard() {
+        //Text body
+        //let $textToCopy = $('#snip');
+        let $textToCopy = $('#snip');
+
+        //Select the text body
+        $textToCopy.select();
+
+        //Copy the text
+        document.execCommand("copy");
+        //debugger;
+    }
     // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -71,16 +89,4 @@
             $(this).removeClass("floating-label-form-group-with-focus");
         });
     });
-
-    const copyToClipboard = () => {
-        //Text body
-        let textToCopy = 'something';
-
-        //Select the text body
-        textToCopy.select();
-
-        //Copy the text
-        document.execCommand("copy");
-    }
-
 })(jQuery); // End of use strict
