@@ -18,6 +18,11 @@ h6 {
     font-family: 'Montserrat';
 }
 
+#headerOverride {
+    padding-top: calc(2rem + 72px);
+    padding-bottom: 2rem;
+}
+
 #HTML {
     background-color: #e34c26;
 }
@@ -65,8 +70,6 @@ h6 {
 #Other {
     background-color: #2C3E50;
 }
-
-
 
 .preview-cards {
     background-color: ghostwhite;
@@ -240,8 +243,8 @@ section {
 }
 
 header.masthead {
-    padding-top: calc(6rem + 72px);
-    padding-bottom: 6rem;
+    padding-top: calc(2rem + 72px);
+    padding-bottom: 3rem;
 }
 
     header.masthead h1 {
