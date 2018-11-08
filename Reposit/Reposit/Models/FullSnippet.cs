@@ -27,29 +27,29 @@ namespace Reposit.Models
 
     public enum Language
     {
-        [Display(Name = "Javascript")]
+        [Display(Name="Javascript")]
         JavaScript,
-        [Display(Name = "Swift")]
+        [Display(Name="Swift")]
         Swift,
-        [Display(Name = "Java")]
+        [Display(Name="Java")]
         Java,
-        [Display(Name = "C++")]
+        [Display(Name="C++")]
         Cpp,
-        [Display(Name = "Python")]
+        [Display(Name="Python")]
         Python,
-        [Display(Name = "PHP")]
+        [Display(Name="PHP")]
         PHP,
-        [Display(Name = "Scalia")]
+        [Display(Name="Scalia")]
         Scala,
-        [Display(Name = "Ruby")]
+        [Display(Name="Ruby")]
         Ruby,
-        [Display(Name = "C#")]
+        [Display(Name="C#")]
         Csharp,
-        [Display(Name = "HTML")]
+        [Display(Name="HTML")]
         HTML,
-        [Display(Name = "CSS")]
+        [Display(Name="CSS")]
         CSS,
-        [Display(Name = "Other")]
+        [Display(Name="Other")]
         Other
     }
 }
