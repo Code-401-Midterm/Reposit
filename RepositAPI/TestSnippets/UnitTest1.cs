@@ -47,29 +47,59 @@ namespace TestSnippets
             Assert.Equal("print('Hello World')", s.CodeBody);
         }
 
-        //Test GetSetSnippetLanguage
+        //Test GetSnippetLanguage
         [Fact]
-        public void GetSetSnippetLanguage()
+        public void GetSnippetLanguage()
         {
             Snippet s = new Snippet();
             s.Language = Language.Python;
             Assert.Equal(Language.Python, s.Language);
         }
 
-        //Test GetSetSnippetNotes
+        //Test SetSnippetLanguage
         [Fact]
-        public void GetSetSnippetNotes()
+        public void SetSnippetLanguage()
+        {
+            Snippet s = new Snippet();
+            s.Language = Language.Ruby;
+            s.Language = Language.Python;
+            Assert.Equal(Language.Python, s.Language);
+        }
+
+        //Test GetSnippetNotes
+        [Fact]
+        public void GetSnippetNotes()
         {
             Snippet s = new Snippet();
             s.Notes = "notes notes notes";
             Assert.Equal("notes notes notes", s.Notes);
         }
 
-        //Test GetSetSnippetAuthorID
+        //Test SetSnippetNotes
         [Fact]
-        public void GetSetSnippetAuthorID()
+        public void SetSnippetNotes()
         {
             Snippet s = new Snippet();
+            s.Notes = "um, notes?";
+            s.Notes = "notes notes notes";
+            Assert.Equal("notes notes notes", s.Notes);
+        }
+
+        //Test GetSnippetAuthorID
+        [Fact]
+        public void GetSnippetAuthorID()
+        {
+            Snippet s = new Snippet();
+            s.AuthorID = 1;
+            Assert.Equal(1, s.AuthorID);
+        }
+
+        //Test SetSnippetAuthorID
+        [Fact]
+        public void SetSnippetAuthorID()
+        {
+            Snippet s = new Snippet();
+            s.AuthorID = 3;
             s.AuthorID = 1;
             Assert.Equal(1, s.AuthorID);
         }
