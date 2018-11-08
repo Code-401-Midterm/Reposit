@@ -47,7 +47,6 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                           
                             <h5 class="modal-title" id="exampleModalLongTitle">@Html.DisplayFor(modelItem => thing.Title)</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -55,38 +54,31 @@
                         </div>
                         <div class="modal-body">
                             <dl class="dl-horizontal">
-                                <dt>
-                                    @Html.DisplayNameFor(modelItem => thing.Title)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(modelItem => thing.Title)
-                                </dd>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <dt>
+                                            @Html.DisplayNameFor(modelItem => thing.Author): <span>@Html.DisplayFor(modelItem => thing.Author)</span>
+                                        </dt>
+                                    </div>
+                                    <div class="col-md-6">
+                                            <span class="badge badge-primary mb-4 float-right" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
+                                    </div>
+                                </div>
+
                                 <dt>
                                     @Html.DisplayNameFor(modelItem => thing.CodeBody)
                                 </dt>
                                 <dd>
                                     <pre class="CodeSnippet"><code>
-                                    @Html.DisplayFor(modelItem => thing.CodeBody)
-                                        </code>
-                                    </pre>
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(modelItem => thing.Language)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(modelItem => thing.Language)
+                                @Html.DisplayFor(modelItem => thing.CodeBody)
+                                    </code>
+                                </pre>
                                 </dd>
                                 <dt>
                                     @Html.DisplayNameFor(modelItem => thing.Notes)
                                 </dt>
                                 <dd>
                                     @Html.DisplayFor(modelItem => thing.Notes)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(modelItem => thing.Author)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(modelItem => thing.Author)
                                 </dd>
                             </dl>
                         </div>

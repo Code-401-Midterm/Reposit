@@ -93,7 +93,8 @@ h6 {
 }
 
 .preview-cards:hover {
-    background-color: aquamarine;
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 hr.star-light,
