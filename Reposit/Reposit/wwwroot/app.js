@@ -72,4 +72,15 @@
         });
     });
 
+    const copyToClipboard = () => {
+        //Text body
+        let textToCopy = 'something';
+
+        //Select the text body
+        textToCopy.select();
+
+        //Copy the text
+        document.execCommand("copy");
+    }
+
 })(jQuery); // End of use strict
