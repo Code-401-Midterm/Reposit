@@ -28,16 +28,6 @@ namespace TestSnippets
             Assert.Equal("Hello", s.Title);
         }
 
-        //Test GetSetSnippetDate
-        [Fact]
-        public void GetSetSnippetDate()
-        {
-            Snippet s = new Snippet();
-            DateTime dt = DateTime.Now;
-            s.Date = dt;
-            Assert.Equal(dt, s.Date);
-        }
-
         //Test GetSetSnippetCodeBody
         [Fact]
         public void GetSetSnippetCodeBody()
@@ -88,7 +78,6 @@ namespace TestSnippets
                 //Arrange
                 Snippet s = new Snippet();
                 s.Title = "Test";
-                s.Date = DateTime.Now;
                 s.CodeBody = "code stuff";
                 s.Language = Language.Other;
                 s.Notes = "notes";
@@ -119,7 +108,6 @@ namespace TestSnippets
                 //Arrange
                 Snippet s1 = new Snippet();
                 s1.Title = "Test1";
-                s1.Date = DateTime.Now;
                 s1.CodeBody = "code stuff";
                 s1.Language = Language.Other;
                 s1.Notes = "notes";
@@ -127,7 +115,6 @@ namespace TestSnippets
 
                 Snippet s2 = new Snippet();
                 s2.Title = "Test2";
-                s2.Date = DateTime.Now;
                 s2.CodeBody = "code";
                 s2.Language = Language.Other;
                 s2.Notes = "notes2";
@@ -135,7 +122,6 @@ namespace TestSnippets
 
                 Snippet s3 = new Snippet();
                 s3.Title = "Test3";
-                s3.Date = DateTime.Now;
                 s3.CodeBody = "stuff";
                 s3.Language = Language.Other;
                 s3.Notes = "notes 3";
