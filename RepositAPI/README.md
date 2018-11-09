@@ -16,6 +16,7 @@ Example request to get all snippets:
 	![partial-snippet-list](../assets/GETSnippet.png)
 
 ## Database Schema
+![api-schema](../assets/APIDBSchema.png)
 
 ## Tools used
 Visual Studio, .NET MVC Core, Entity Framework, Swagger, Azure
