@@ -134,10 +134,16 @@ A user can create, edit, and delete a category and will have the ability to add 
 ![dataflow](../assets/DataFlowDiagram.png)
 
 ## Database Schema
-![API Schema](../assets/APIDBSchema.jpg)
-![Web App Schema](../assets/WebAppDBSchema.jpg)
+### API DB Schema
+![API Schema](../assets/APIDBSchema.png)
 
-### Description
-* Snippet: This table will hold the data for each individual snippet, such as the name, date, and code snippet body of text. This table also features an Enum for code languages.
-* Tag: This table contains the tags that will pertain to snippets created in our database
-* Snippet Tags: This is a pure join table that will join snippets and tags, emulating a many to many relationship.
+*Description* 
+* Snippet: This table holds the data for each individual snippet, such as the Title, Code Body, Notes, Author, and Language. This table also features an Enum for code languages.
+* Author: This table holds the data for each individual author.
+
+### Web App DB Schema
+![Web App Schema](../assets/WebAppDBSchema.png)
+
+*Description*
+* FullSnippet: This table will hold the data for each individual snippet, such as the name, date, and code snippet body of text. This table also features an Enum for code languages.
+* Category: This table contains the categories that group FullSnippets.
