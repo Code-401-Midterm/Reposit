@@ -18,6 +18,7 @@ namespace Reposit.Models
         public string Notes { get; set; }
         [Required(ErrorMessage = "This field is required")]
         public string Author { get; set; }
+        [Display(Name = "Category")]
         public int CategoryID { get; set; }
 
         public Category Category { get; set; }
