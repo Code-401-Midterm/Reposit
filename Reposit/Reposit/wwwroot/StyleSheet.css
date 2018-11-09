@@ -471,3 +471,7 @@ a {
         background-color: #1a252f;
         border-color: #1a252f;
     }
+
+td {
+    font-size: 20px;
+}
