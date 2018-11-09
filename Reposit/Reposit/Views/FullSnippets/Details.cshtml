@@ -6,8 +6,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<h2>@Html.DisplayFor(model => model.Title)</h2>*@
-
 <div>
     <div class="container">
 
@@ -36,17 +34,19 @@
                     </code>
                 </pre>
                 <textarea class="snip">@Html.DisplayFor(model => model.CodeBody)</textarea>
-                <button class="copyButton">Copy Snippet!</button>
             </dd>
         </div>
         <div class="col-sm-4">
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Notes)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Notes)
-            </dd>
+            <div>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Notes)
+                </dd>
+            </div>
+            
+            <button class="btn btn-secondary copyButton">Copy Snippet!</button>
         </div>
     </div>
     <dl class="dl-horizontal"></dl>

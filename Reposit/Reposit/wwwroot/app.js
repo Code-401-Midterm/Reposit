@@ -7,6 +7,9 @@
     //Event listener for copy
     $(".copyButton").on("click", function () {
         copyToClipboard();
+        $(this).text("Copied!");
+            $(this).removeClass('btn-secondary').addClass('btn-primary');
+
     });
 
     //Copy to clipboard
