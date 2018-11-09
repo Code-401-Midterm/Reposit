@@ -92,8 +92,16 @@ h6 {
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.10)
 }
 
-.preview-cards:hover {
-    transform: scale(1.05);
+.searchBar {
+    border-radius: 5px;
+}
+
+#dont-do-stuff:hover {
+    text-decoration: none;
+}
+
+.add-category-card:hover {
+    transform: scale(1.02);
     cursor: pointer;
 }
 

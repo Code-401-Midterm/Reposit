@@ -52,7 +52,7 @@
     <dl class="dl-horizontal"></dl>
     <div class="row mb-4">
         <div class="col-sm-12 text-center">
-            <a asp-controller="Categories" asp-action="Details" asp-route-id="@Model.CategoryID"><h6 class="d-inline">Back to Category</h6></a>
+            <a asp-controller="Categories" asp-action="Details" asp-route-id="@Model.CategoryID"><h6 class="d-inline">Back to '@Model.Category.Title'</h6></a>
             <a asp-action="Edit" class="ml-4" asp-route-id="@Model.ID"><h6 class="d-inline">Edit</h6></a>
             <a asp-action="Delete" class="ml-4" asp-route-id="@Model.ID"><h6 class="d-inline">Delete</h6></a>
         </div>
