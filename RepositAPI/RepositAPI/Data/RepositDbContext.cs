@@ -49,7 +49,8 @@ namespace RepositAPI.Data
                 {
                     ID = 1,
                     Title = "Hello World console writeline",
-                    CodeBody = "Console.WriteLine(\"Hello World!\")",
+                    CodeBody = @"
+Console.WriteLine(""Hello World!"")",
                     Language = Language.Csharp,
                     Notes = "This is cool.",
                     AuthorID = 1
@@ -58,7 +59,8 @@ namespace RepositAPI.Data
                 {
                     ID = 2,
                     Title = "Hello World python",
-                    CodeBody = "Print(\"Hello World!\")",
+                    CodeBody = @"
+Print(""Hello World!"")",
                     Language = Language.Python,
                     Notes = "This is cooler",
                     AuthorID = 2
@@ -118,7 +120,7 @@ public static int BinarySearchArray(int[] arr, int val)
                 new Snippet
                 {
                     ID = 5,
-                    Title = "Array.Prototype.Map()",
+                    Title = ".Map()",
                     CodeBody = @"
 const mapTwoToThe = (input) => 
 {
@@ -186,7 +188,7 @@ public int numUniqueEmails(String[] emails)
         {
             local = local.substring(0, local.indexOf('+'));
         }
-        local = local.replaceAll(""."", "");
+        local = local.replaceAll(""."", """");
         seen.add(local + rest);
     }
 
@@ -240,7 +242,8 @@ const newPatient = (req, res) => {
                 {
                     ID = 10,
                     Title = "SQL",
-                    CodeBody = "SELECT * FROM myTable",
+                    CodeBody = @"
+SELECT * FROM myTable",
                     Language = Language.Other,
                     Notes = "Simple sql query. * means everything!",
                     AuthorID = 3

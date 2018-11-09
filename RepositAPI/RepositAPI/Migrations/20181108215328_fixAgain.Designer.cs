@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositAPI.Data;
 
 namespace RepositAPI.Migrations
 {
     [DbContext(typeof(RepositDbContext))]
-    partial class RepositDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181108215328_fixAgain")]
+    partial class fixAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -156,7 +158,7 @@ public int numUniqueEmails(String[] emails)
         {
             local = local.substring(0, local.indexOf('+'));
         }
-        local = local.replaceAll(""."", """");
+        local = local.replaceAll(""."", "");
         seen.add(local + rest);
     }
 
