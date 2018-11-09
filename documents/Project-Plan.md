@@ -128,7 +128,7 @@ A user can create, edit, and delete a category and will have the ability to add 
     - Swagger grabs method comments  
 
 ## Wireframes
-![wireframe](../assets/RepositWF.png)
+![wireframe](../assets/RepositWF2.png)
 
 ## Dataflow Diagram
 ![dataflow](../assets/DataFlowDiagram.png)
