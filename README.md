@@ -11,20 +11,22 @@ The project comprises the RepositAPI and the Reposit Web Application, which are 
 [Project Plan](/documents/Project-Plan.md)
 
 ## Deployed Site
+https://reposit.azurewebsites.net/
+
 ## Usage
+
 ## Database Schema
+![db-schema](assets/WebAppDBSchema.png)
+
 ## Tools used
+Visual Studio, .NET MVC CORE, Entity Framework, CSS/HTML, SQL database, Azure, HighlightJS
+
 ## Contributors
+* Jeremy Beck (mtncrawler)
+* Kendra Ellis (ellisken)
+* Allisa LeBeuf (allisa)
+* Richard Jimenez (richjimdev)
+* Jeff Weng (inkh)
+
 ## License
 MIT
-
-Link to your deployed site
-Introduction to your project (What is it? Why should you use it? What is it’s purpose?)
-Screenshots of what your project looks like
-If an API, data examples of how to setup/use (in addition, link to the api/swagger documentation)
-Database Schema (clean digital drawing)
-WireFrames.
-DB Schema breakdown/explanation
-Tools you used (VSTS, Visual Studio, Swagger, etc…)
-Contributors
-MIT License
