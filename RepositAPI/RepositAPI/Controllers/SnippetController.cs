@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RepositAPI.Data;
 using RepositAPI.Models;
-using RepositAPI.Models.ViewModels;
+
 
 namespace RepositAPI.Controllers
 {
@@ -16,12 +16,21 @@ namespace RepositAPI.Controllers
     public class SnippetController : ControllerBase
     {
         private RepositDbContext _context;
+
+        /// <summary>
+        /// Contructor
+        /// </summary>
+        /// <param name="context">DB context</param>
         public SnippetController(RepositDbContext context)
         {
             _context = context;
         }
 
-        //Get All
+        
+        /// <summary>
+        /// Get all Snippets
+        /// </summary>
+        /// <returns>A list of all Snippets</returns>
         [HttpGet]
         public async Task<IEnumerable<SnippetDTO>> Get()
         {
@@ -46,7 +55,11 @@ namespace RepositAPI.Controllers
             //return await _context.Snippets.Include(s => s.Author).ToListAsync();
         }
 
-        //Get Snippet by ID
+        /// <summary>
+        /// Gets and returns a Snippet by ID
+        /// </summary>
+        /// <param name="id">Snippet's ID</param>
+        /// <returns>The requested Snippet</returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute]int id)
         {
@@ -72,7 +85,11 @@ namespace RepositAPI.Controllers
             return Ok(snippet);
         }
 
-        //Create new Snippet
+        /// <summary>
+        /// Create a Snippet
+        /// </summary>
+        /// <param name="snippet">The snippet to create in the DB</param>
+        /// <returns>201 status and new snippet's details</returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Snippet snippet)
         {

@@ -7,5 +7,5 @@
     <input type="hidden" asp-for="Notes" value="@Model.Notes" />
     <input type="hidden" asp-for="Author" value="@Model.Author" />
     <input type="hidden" asp-for="CategoryID" value="@ViewData["CategoryID"]" />
-    <input type="submit" value="Add to Category" class="btn btn-primary" />
+    <input type="submit" value="Add to '@ViewData["CategoryTitle"]'" class="btn btn-primary" />
 </form>

@@ -55,69 +55,77 @@ A user can create, edit, and delete a category and will have the ability to add 
   
 ## User Stories
 ### Web App  
-* SEARCH: As a user, I want to search for code snippets based on language or category to find an applicable solution to my issue.
+* SEARCH: As a user, I want to search for code snippets to add to different code snippet categories.
   - Features
-    - User can search by language or category
+    - User can search by title for code snippets
     - Display search results
-    - Ability to get more details from results
+    - Ability to get more details and add to category
   - Acceptance
     - Ensure the search terms retrieve the correct data
-    - Provide a message if no results are found
+    - Snippet is added to category
 * DESIGN: As a user, I want a clean design and intuitive navigation for good user experience.
   - Features
-    - User can clearly navigate
-    - Navigation menu present on all views
+    - User can clearly navigate  
+    - Navigation menu present on all views  
   - Acceptance
     - Hallway testing
 * VIEW: As a user, I want to view code snippets and details on a page so I can review all the useful code snippets in a specific Category.
   - Features
-    - Code snippet and details displayed on page
-    - Organized and ease of reading
+    - Code snippet listed on a page  
+	- Details link for each code snippet  
+    - Organized and ease of reading  
   - Acceptance
-    - All details render on page
-    - Multiple results render
-* ADD: As a user, I want to add code snippets and details so that I can retrieve them later.
+    - Code snippets in category rendered on category index page  
+    - Details link displays all details  
+* ADD: As a user, I want to add code snippets and details to a category.
   - Features
-    - Forms for user to input all data
-    - Confirmation that data was saved
+    - Forms for user to input all details and code  
+    - Language drop down menu 
   - Acceptance
-    - All details are saved
-    - Data can be retrieved
+    - All details are saved   
+	- Code snippet details link displays details  
+* MANAGE: As a user, I want to manage code snippets in a category.  
+  -Features
+	- Add, update and delete code snippets from category  
+	- View details of code snippets  
+	- Browse new code snippets to add to category
+  - Acceptance
+    - Code snippets are added, updated, or deleted   
+	- Details accessable from category page    
+
 ### API  
-* CREATE: As a developer, I want to allow users to create code snippets to add to the web app's database.
+* CREATE: As a user, I want to to add code snippets to a category from the API results.
   - Features
-    - User will enter title, category, code snippet, and source of snippet.
-    - Created snippets will save to database.
-    - Each snippet is a unique record in the database.
+    - User selects a code snippet to display details
+    - Add to category option in the details of code snippet
+    - Only code snippets not in the category are available to add to category
   - Acceptance
-    - Ensure required fields are completed in order to create snippet.
-    - Ensure a unique id is created when snippet is created.
-    - Ensure code snippet can be retrieved after creating.
-* READ: As a developer, I want to allow users to retrieve or search for code snippets.
+    - API code snippet is added to category
+    - Code snippets already in the category are not displayed 
+* READ: As a user, I want to retrieve code snippets from the API.
   - Features
-    - Requested information will be returned to user based on the search criteria.
-    - A status message will be returned if there is no matching data.
-    - Multiple results will be returned if there is more than one match.
+    - User can access browse page from a category to view API code snippets and web code snippets not within the category  
+    - API code snippets will match the formatting of web app code snippet details
+    - Details can be displayed for API code snippets before adding  
+	- User can add API code snippet to category  
   - Acceptance
-    - Ensure information can be retrieved matching search criteria.
-    - Ensure multiple results can be returned when requested.
-    - Ensure a message is returned if there is no matching data.
-* UPDATE: As a developer, I want to allow users to make updates to code snippets.
+    - API code snippets displayed on broswe page 
+    - Code snippet is added to category  
+    - All details transferred from API  
+* TRANSFER: As a developer, I want model properties to match to the web models to ease transfer of data.
   - Features
-    - Updated snippet will save over original snippet in database.
-    - Allow updates to category tags and language.
+    - Model properties for snippet objects match or are similiar  
+    - Transmit all details for code snippets to web app  
   - Acceptance
-    - Ensure users have required fields entered
-    - Ensure updated information is saved to database
-    - Ensure request failed message is sent if information was not updated.
-* DELETE: As a developer, I want to allow a user to delete a code snippet.
+    - Unserialized data matches expected API code snippet details 
+    - Data is transmitted to web app 
+* DELETE: As a developer, I want to create endpoint documentation and method comments for easy to read code.
   - Features
-    - Code snippet can be deleted when selected.
+    - Utilize swagger for endpoint and API documentation  
+	- Add comments to API methods  
   - Acceptance
-    - Ensure snippet is deleted from database.
-    - Ensure a request failed message is sent if snippet was not deleted.
-    - Ensure only one snippet is deleted.
-    - Public: As a developer, we want the api to provide consistent 
+    - Pass tests for API endpoints
+    - Swagger grabs method comments  
 
 ## Wireframes
 ![wireframe](../assets/RepositWF.png)
