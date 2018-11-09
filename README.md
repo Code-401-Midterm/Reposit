@@ -14,6 +14,24 @@ The project comprises the RepositAPI and the Reposit Web Application, which are 
 https://reposit.azurewebsites.net/
 
 ## Usage
+Our web app features a clean and easy to follow UI. Our home page shows a concept of what a single, logged-in user would see. At this point you will see all categories you have created.
+![](assets/usage1.JPG)
+
+Clicking on the create link or the empty card allows you create a new category. A category is what our app uses to orgaznie and store code snippets.
+![](assets/usage2.JPG)
+
+Click on a category name will permit you to see all snippets that have been stored to that category.
+![](assets/usage3.JPG)
+
+Clicking on Browse will show all snippets from our API.
+![](assets/usage5.JPG)
+
+Clicking on show details will bring up a modal and allows you to add that snippet to the category.
+![](assets/usage6.JPG)
+
+From the category details view, you can also create a new snippet, allowing you to add your own custom code. 
+![](assets/usage4.JPG)
+
 
 ## Database Schema
 ![db-schema](assets/WebAppDBSchema.png)
