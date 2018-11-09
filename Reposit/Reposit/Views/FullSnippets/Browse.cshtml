@@ -6,21 +6,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     int count = 1;
 }
-
-<h2>Snippets</h2>
-<p>
-    <a asp-action="Details" asp-controller="Categories" asp-route-id="@Model.CategoryID">Back to category</a> |
-</p>
 <div class="container-fluid">
-    <form method="post">
-        <label>Search by Title:</label>
-        <input type="text" placeholder="Enter search term here" name="searchTerm" />
-        <input type="hidden" name="id" value="@Model.CategoryID"/>
-        <button type="submit">Search</button>
-    </form>
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <a asp-action="Details" asp-controller="Categories" asp-route-id="@Model.CategoryID">Back to '@Model.CategoryTitle' </a>
+        </div>
+        <div class="col-md-6">
+            <form class="float-right" method="post">
+                <label>Search by Title:</label>
+                <input type="text" class="searchBar ml-2" placeholder="Enter search term here" name="searchTerm" />
+                <input type="hidden" name="id" value="@Model.CategoryID" />
+                <button type="submit" class="btn btn-secondary ml-3" >Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    
 
     <div class="row">
-
         @foreach (var thing in Model.AllSnippets)
         {
             <div class="col-md-4 mb-5">
@@ -29,7 +34,6 @@
                         @Html.DisplayFor(modelItem => thing.Title)
                     </h4>
                     <span class="badge badge-primary mb-4" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
-
                     <p class="card-text">
                         @Html.DisplayFor(modelItem => thing.Notes)
                     </p>
@@ -61,7 +65,7 @@
                                         </dt>
                                     </div>
                                     <div class="col-md-6">
-                                            <span class="badge badge-primary mb-4 float-right" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
+                                        <span class="badge badge-primary mb-4 float-right" id="@Html.DisplayFor(modelItem => thing.Language)">@Html.DisplayFor(modelItem => thing.Language)</span>
                                     </div>
                                 </div>
 
@@ -89,13 +93,8 @@
                 </div>
             </div>
             count++;
-                            }
+        }
+
     </div>
 
 </div>
-
-
-
-                @*<a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>*@

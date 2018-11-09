@@ -92,6 +92,10 @@ h6 {
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.10)
 }
 
+.searchBar {
+    border-radius: 5px;
+}
+
 #dont-do-stuff:hover {
     text-decoration: none;
 }
