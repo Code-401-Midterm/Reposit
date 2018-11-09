@@ -5,7 +5,7 @@ This product seeks to provide a virtual repository that allows users to create a
 
 The project comprises the RepositAPI and the Reposit Web Application, which are "standalaone" services hosted separately, though the Reposit Web Application makes calls to the RepositAPI.
 
-	* [RepositAPI Docs](/RepositAPI/README.md)
+[RepositAPI Docs](/RepositAPI/README.md)
 
 ## Planning
 [Project Plan](/documents/Project-Plan.md)
@@ -19,12 +19,12 @@ The project comprises the RepositAPI and the Reposit Web Application, which are 
 MIT
 
 Link to your deployed site
-Introduction to your project (What is it? Why should you use it? What is it’s purpose?)
+Introduction to your project (What is it? Why should you use it? What is itâ€™s purpose?)
 Screenshots of what your project looks like
 If an API, data examples of how to setup/use (in addition, link to the api/swagger documentation)
 Database Schema (clean digital drawing)
 WireFrames.
 DB Schema breakdown/explanation
-Tools you used (VSTS, Visual Studio, Swagger, etc…)
+Tools you used (VSTS, Visual Studio, Swagger, etcâ€¦)
 Contributors
 MIT License
