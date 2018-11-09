@@ -8,12 +8,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<hr />
-
 <p>
-    <a asp-controller="FullSnippets" asp-action="Create" asp-route-id="@Model.ID"><h6 class="d-inline">Create new snippet</h6></a>
-    <a asp-controller="FullSnippets" asp-action="Browse" asp-route-id="@Model.ID"><h6 class="d-inline">Browse Snippet Library</h6></a>   
+    <a asp-controller="FullSnippets" asp-action="Create" asp-route-id="@Model.ID"><h6 class="d-inline mr-4">Create new snippet</h6></a>
+    <a asp-controller="FullSnippets" asp-action="Browse" asp-route-id="@Model.ID"><h6 class="d-inline ml-4 mr-4">Browse Snippet Library</h6></a>
+    <a asp-action="Index"><h6 class="d-inline ml-4">Back to Categories</h6></a>
 </p>
+
+<hr />
 
 <div class="container-fluid">
     <div class="row">
@@ -36,6 +37,3 @@
         }
     </div>
 </div>
-            <div>
-                <a asp-action="Index">Back to List</a>
-            </div>
