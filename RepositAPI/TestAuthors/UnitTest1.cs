@@ -72,6 +72,9 @@ namespace TestAuthors
             }
         }
 
+        /// <summary>
+        /// Tests that one author can be retrieved.
+        /// </summary>
         [Fact]
         public async void AuthorCanGetOneTest()
         {
