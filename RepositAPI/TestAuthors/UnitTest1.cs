@@ -37,7 +37,7 @@ namespace TestAuthors
         /// Tests that correct Author is saved in DB
         /// </summary>
         [Fact]
-        public async void AuthorCanSaveTest()
+        public async void AuthorCanSaveAndGetAllTest()
         {
             DbContextOptions<RepositDbContext> options =
             new DbContextOptionsBuilder<RepositDbContext>()
@@ -65,12 +65,41 @@ namespace TestAuthors
                 testList.Add(c);
 
                 //Act
-                var author = await context.Authors.FirstOrDefaultAsync(x => x.Name == a.Name);
-
                 var authors = await context.Authors.ToArrayAsync();
 
                 //Assert
                 Assert.Equal(authors, testList);
+            }
+        }
+
+        [Fact]
+        public async void AuthorCanGetOneTest()
+        {
+            DbContextOptions<RepositDbContext> options =
+            new DbContextOptionsBuilder<RepositDbContext>()
+            .UseInMemoryDatabase("AuthorCanGet")
+            .Options;
+
+            using (RepositDbContext context = new RepositDbContext(options))
+            {
+                //Arrange
+                Author a = new Author();
+                a.Name = "Pug";
+                context.Authors.Add(a);
+                Author b = new Author();
+                b.Name = "Pugador";
+                context.Authors.Add(b);
+                Author c = new Author();
+                c.Name = "Labradoodle";
+                context.Authors.Add(c);
+
+                context.SaveChanges();
+
+                //Act
+                var author = await context.Authors.FirstOrDefaultAsync(x => x.Name == a.Name);
+
+                //Assert
+                Assert.Equal(author.ID, a.ID);
             }
         }
     }
