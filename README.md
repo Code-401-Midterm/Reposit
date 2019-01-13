@@ -11,7 +11,7 @@ The project comprises the RepositAPI and the Reposit Web Application, which are 
 [Project Plan](/documents/Project-Plan.md)
 
 ## Deployed Site
-https://reposit.azurewebsites.net/
+https://reposit.azurewebsites.net/ (no longer hosted)
 
 ## Usage
 Our web app features a clean and easy to follow UI. Our home page shows a concept of what a single, logged-in user would see. At this point you will see all categories you have created.
