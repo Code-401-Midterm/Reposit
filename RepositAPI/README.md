@@ -1,6 +1,8 @@
 # RepositAPI
-The RepositAPI primarily serves a list of code snippets from the RepositAPI database. The API also supports POST requests
-to create new Snippets and new Authors. For more info, please visit the [docs](https://repositapi.azurewebsites.net/swagger). 
+The RepositAPI serves a list of code snippets from the RepositAPI database via GET request. It also supports POST requests
+for creating new Snippet and Author entities. 
+
+For more info, please visit the [swagger documentation](). **NOTE - this documentation is no longer accessible because we no longer maintain or host Reposit**
 
 ## Main Endpoint
 https://repositapi.azurewebsites.net/api
@@ -9,7 +11,7 @@ https://repositapi.azurewebsites.net/api
 [RepositAPI Documentation](https://repositapi.azurewebsites.net/swagger)
 
 ## Usage
-Example request to get all snippets:
+Example GET request to retieve all snippets:
 
 1. Send a GET request to https://repositapi.azurewebsites.net/api/snippet via Postman or use the following CURL command ```curl -X GET "https://repositapi.azurewebsites.net/api/Snippet" -H "accept: text/plain"```
 2. You'll receive a response like the following partial list:
