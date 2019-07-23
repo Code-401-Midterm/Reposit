@@ -3,7 +3,7 @@ A simple code snippet repository where you can create and categorize helpful cod
 
 Reposit helps you keep track of concise solutions to frequently-encountered problems so that you can quickly retrieve them in the future.
 
-The project comprises the RepositAPI and the Reposit Web Application, which are "standalaone" services hosted separately, though the Reposit Web Application makes calls to the RepositAPI.
+This project comprises the RepositAPI and the Reposit Web Application, each hosted separately. The Reposit Web Application makes calls to the RepositAPI.
 
 [RepositAPI Docs](/RepositAPI/README.md)
 
