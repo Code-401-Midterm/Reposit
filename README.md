@@ -1,7 +1,7 @@
 # Reposit
-A simple personal code snippet repository that allows a user to create and group code snippets used to solve specific problems so that snippets can be easily found for reuse or review in the future.
+A simple code snippet repository where you can create and categorize helpful code snippets for reuse or review in the future.
 
-This product seeks to provide a virtual repository that allows users to create and categorize code snippets deemed helpful. This facilitates keeping track of important and helpful solutions to small problems frequently encountered. For example, a user may want to remember an effective method to process an array of integers and removed all multiples of a given input, n.
+Reposit helps you keep track of concise solutions to frequently-encountered problems so that you can quickly retrieve them in the future.
 
 The project comprises the RepositAPI and the Reposit Web Application, which are "standalaone" services hosted separately, though the Reposit Web Application makes calls to the RepositAPI.
 
@@ -14,22 +14,22 @@ The project comprises the RepositAPI and the Reposit Web Application, which are 
 https://reposit.azurewebsites.net/ (no longer hosted)
 
 ## Usage
-Our web app features a clean and easy to follow UI. Our home page shows a concept of what a single, logged-in user would see. At this point you will see all categories you have created.
+Reposit UI is easy to use and navigate. For example, the picture below shows the home page for a logged-in user listing all categories the user's created.
 ![](assets/usage1.JPG)
 
-Clicking on the create link or the empty card allows you create a new category. A category is what our app uses to orgaznie and store code snippets.
+Clicking on Create or the empty card lets you create a new category. A category is what Reposit uses to categorize and store code snippets.
 ![](assets/usage2.JPG)
 
-Click on a category name will permit you to see all snippets that have been stored to that category.
+Clicking on a category name takes you to a list of all snippets stored to that category.
 ![](assets/usage3.JPG)
 
 Clicking on Browse will show all snippets from our API.
 ![](assets/usage5.JPG)
 
-Clicking on show details will bring up a modal and allows you to add that snippet to the category.
+Clicking on Show Details opens a popup wizard that walks you through adding a snippet to a category.
 ![](assets/usage6.JPG)
 
-From the category details view, you can also create a new snippet, allowing you to add your own custom code. 
+From the Category Details view, you can also create a new snippet with custom code. 
 ![](assets/usage4.JPG)
 
 
