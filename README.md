@@ -1,5 +1,5 @@
 # Reposit
-A simple code snippet repository where you can create and categorize helpful code snippets for reuse or review in the future.
+A simple code snippet repository where you can create and categorize helpful code snippets.
 
 Reposit helps you keep track of concise solutions to frequently-encountered problems so that you can quickly retrieve them in the future.
 
